@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 import SectionTitle from 'components/SectionTitle/Loadable'
 
-import trello from 'images/partners/trello.png'
-import microsoft from 'images/partners/microsoft.png'
-import corda from 'images/partners/corda.png'
-import hubspot from 'images/partners/hubspot.png'
-import './style.scss'
+import trello from 'images/partners/Trello.png'
+import microsoft from 'images/partners/Microsoft.png'
+import corda from 'images/partners/Corda.png'
+import hubspot from 'images/partners/Hubspot.png'
+import './style.scss'   
 
 const products = [
     {
