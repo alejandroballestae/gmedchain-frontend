@@ -23,6 +23,13 @@ import BlogDetails from 'containers/BlogDetails/Loadable'
 import ContactPage from 'containers/ContactPage/Loadable'
 import ErrorPage from 'containers/ErrorPage/Loadable'
 import ShoppingCart from 'containers/ShoppingCart'
+import ShoppingCartTwo from 'containers/ShoppingCartTwo'
+import ShoppingCartThree from 'containers/ShoppingCartThree'
+import OrderPlaced from 'containers/OrderPlaced'
+import ContactSupplierPage from 'containers/ContactSupplierPage'
+import LoginPage from 'containers/LoginPage'
+import RegistrationPage from 'containers/RegistrationPage'
+import VerificationCodePage from 'containers/VerificationCodePage'
 
 const Routes = () => {
     return (
@@ -42,10 +49,45 @@ const Routes = () => {
                 path="/home-three"
                 component={HomeThreeStyle}
             />
+           <PrivateRoute
+                exact
+                path="/login"
+                component={LoginPage}
+            />
+            <PrivateRoute
+                exact
+                path="/verification"
+                component={VerificationCodePage}
+            />
+            <PrivateRoute
+                exact
+                path="/registration"
+                component={RegistrationPage}
+            />
             <PrivateRoute
                 exact
                 path="/BecomeSeller"
                 component={BecomeSeller}
+            />
+            <PrivateRoute
+                exact
+                path="/checkout-two"
+                component={ShoppingCartTwo}
+            />
+             <PrivateRoute
+                exact
+                path="/checkout-three"
+                component={ShoppingCartThree}
+            />
+            <PrivateRoute
+                exact
+                path="/order-message"
+                component={OrderPlaced}
+            />
+            <PrivateRoute
+                exact
+                path="/contact-supplier"
+                component={ContactSupplierPage}
             />
             <PrivateRoute
                 exact

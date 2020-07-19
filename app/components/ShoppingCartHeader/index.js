@@ -10,12 +10,12 @@ import 'rsuite/dist/styles/rsuite-default.css'
 const stepsStyle = {
     BackgroundColor : 'white'
 }
-const ShoppingCartTable = ({ title, menus }) => {
+const ShoppingCartHeader = ({ title, menus }) => {
     const [cetagory, setCetagory] = useState('all')
     const [search, setSearch] = useState('')
     return (
         <Grid className="breadcumbArea">
-            <Grid container spacing={4} className="container">
+            <Grid container className="container">
                 <Grid item xs={12}>
                     <Grid className="breadcumbWrap">
                         <h2>{title}</h2>
@@ -32,20 +32,19 @@ const ShoppingCartTable = ({ title, menus }) => {
                         </ul>
                     </Grid>
                     <br></br>
-                    <Grid className="heroContentTwo">
-                    <form className="heroForm">
-                    <Steps current={1}  >
-                            <Steps.Item Style = {stepsStyle} title="Finished" description="Description" />
-                            <Steps.Item Style = {stepsStyle} title="In Progress" description="Description" />
-                            <Steps.Item title="Waiting" description="Description" />
-                            <Steps.Item title="Waiting" description="Description" />
-                        </Steps>    
-                        </form>
+                    <Grid className="heroContentTwo"  >
+                        <Grid md={12}>
+                            <Steps current={1}  >
+                                <Steps.Item title="Finished" description="Description" />
+                                <Steps.Item  title="In Progress" description="Description" />
+                                <Steps.Item title="Waiting" description="Description" />
+                            </Steps>    
                         </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
     )
 }
 
-export default ShoppingCartTable;
+export default ShoppingCartHeader;

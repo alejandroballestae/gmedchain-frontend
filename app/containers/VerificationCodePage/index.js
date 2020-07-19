@@ -13,9 +13,12 @@ import SupplierNetworkContent from 'components/SupplierNetworkContent/Loadable'
 import Team from 'components/Team/Loadable'
 import Funfact from 'components/HomeTwo/Funfact/Loadable'
 import Testmonial from 'components/Testmonial/Loadable'
+import ShoppingCartHeader from 'components/ShoppingCartHeader/Loadable'
+import ShoppingCartForm from 'components/ShoppingCartForm/Loadable'
+import OrderPlaced from 'components/OrderPLaced/Loadable'
 import Footer from 'components/Footer/Loadable'
+import VerificationCode from 'components/VerificationCode/Loadable'
 import HeroOut from '../../components/HeroOut';
-import ShoppingCartHeader from '../../components/ShoppingCartHeader';
 import TotalCheckout from '../../components/TotalCheckout';
 import ShoppingCartItem from '../../components/ShoppingCartItem';
 
@@ -26,28 +29,27 @@ const menus = [
         link: '/'
     },
     {
-        name: 'Checkout',
+        name: 'Login',
     },
 ]
-const ShoppingCart = () => {
+const VerificationPAge = () => {
+
     return (
         <Fragment>
 
                 <Helmet>
-                    sadasd
+                    GmedChain
                 </Helmet>
                 <Header
                     className="headerAreaStyleTwo"
                     logo={logo}
                 />
-            <ShoppingCartHeader             
-                    title='Checkout your Order'
-                    menus={menus} />
-                    <ShoppingCartItem />
-                    <TotalCheckout resume = {false} />
-            <Footer/>
+  
+                <VerificationCode />
+                    
+            <Footer/> 
         </Fragment>
     );
 }
 
-export default ShoppingCart;
+export default VerificationPAge;

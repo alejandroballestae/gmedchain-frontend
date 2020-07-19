@@ -13,9 +13,12 @@ import SupplierNetworkContent from 'components/SupplierNetworkContent/Loadable'
 import Team from 'components/Team/Loadable'
 import Funfact from 'components/HomeTwo/Funfact/Loadable'
 import Testmonial from 'components/Testmonial/Loadable'
+import ShoppingCartHeader from 'components/ShoppingCartHeader/Loadable'
+import ShoppingCartForm from 'components/ShoppingCartForm/Loadable'
+import OrderPlaced from 'components/OrderPLaced/Loadable'
 import Footer from 'components/Footer/Loadable'
+import Registration from 'components/Registration/Loadable'
 import HeroOut from '../../components/HeroOut';
-import ShoppingCartHeader from '../../components/ShoppingCartHeader';
 import TotalCheckout from '../../components/TotalCheckout';
 import ShoppingCartItem from '../../components/ShoppingCartItem';
 
@@ -26,10 +29,11 @@ const menus = [
         link: '/'
     },
     {
-        name: 'Checkout',
+        name: 'Login',
     },
 ]
-const ShoppingCart = () => {
+const LoginPage = () => {
+
     return (
         <Fragment>
 
@@ -40,14 +44,12 @@ const ShoppingCart = () => {
                     className="headerAreaStyleTwo"
                     logo={logo}
                 />
-            <ShoppingCartHeader             
-                    title='Checkout your Order'
-                    menus={menus} />
-                    <ShoppingCartItem />
-                    <TotalCheckout resume = {false} />
-            <Footer/>
+  
+                <Registration />
+                    
+            <Footer/> 
         </Fragment>
     );
 }
 
-export default ShoppingCart;
+export default LoginPage;

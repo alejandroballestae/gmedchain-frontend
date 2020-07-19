@@ -19,6 +19,7 @@ import ShoppingCartHeader from '../../components/ShoppingCartHeader';
 import TotalCheckout from '../../components/TotalCheckout';
 import ShoppingCartItem from '../../components/ShoppingCartItem';
 
+import ContactSupplier from '../../components/ContactSupplier';
 
 const menus = [
     {
@@ -26,10 +27,10 @@ const menus = [
         link: '/'
     },
     {
-        name: 'Checkout',
+        name: 'Contact Supplier',
     },
 ]
-const ShoppingCart = () => {
+const ContactSupplierPage = () => {
     return (
         <Fragment>
 
@@ -40,14 +41,11 @@ const ShoppingCart = () => {
                     className="headerAreaStyleTwo"
                     logo={logo}
                 />
-            <ShoppingCartHeader             
-                    title='Checkout your Order'
-                    menus={menus} />
-                    <ShoppingCartItem />
-                    <TotalCheckout resume = {false} />
+            <ContactSupplier />
+            
             <Footer/>
         </Fragment>
     );
 }
 
-export default ShoppingCart;
+export default ContactSupplierPage;

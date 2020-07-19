@@ -416,7 +416,7 @@ class ProductDetails extends Component {
                                     </Grid>
                                     <ul>
                                         <li><Button className="btn" component={Link} to='/author'>View Profile</Button></li>
-                                        <li><Button className="btn btnNormal">Send Message</Button></li>
+                                        <li><Button className="btn btnNormal" component={Link}  to='/contact-supplier'>Send Message</Button></li>
                                     </ul>
                                 </Grid>
                             </aside>

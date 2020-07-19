@@ -207,7 +207,7 @@ class ContactPage extends Component {
                 <Grid className="contactArea">
                     <Grid className="container" spacing={4} container>
                         <Grid md={6} xs={12} item>
-                            <form className="contactForm" onSubmit={this.submitHandler}>
+                            <form className="" onSubmit={this.submitHandler}>
                                 <h3>Get In Touch</h3>
                                 <Grid container spacing={4}>
                                     <Grid item sm={6} xs={12}>

@@ -150,7 +150,7 @@ const Header = (props) => {
                             <span className="value">{carts.length < 10 ? `0${carts.length}` : carts.length}</span>
                         </li>
                         <li onClick={handleClickSearch}><i className="fi flaticon-magnifying-glass"></i></li>
-                        <li><Button className="btn">Login</Button></li>
+                        <li><Link to="/login"><Button className="btn">Login</Button></Link></li>
                     </ul>
                     <Menu
                         anchorEl={openSearch}
