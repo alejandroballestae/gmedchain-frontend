@@ -15,7 +15,7 @@ import Funfact from 'components/HomeTwo/Funfact/Loadable'
 import Testmonial from 'components/Testmonial/Loadable'
 import ShoppingCartHeader from 'components/ShoppingCartHeader/Loadable'
 import ShoppingCartForm from 'components/ShoppingCartForm/Loadable'
-import OrderPlaced from 'components/OrderPLaced/Loadable'
+import OrderPlaced from 'components/OrderPlaced/Loadable'
 import Footer from 'components/Footer/Loadable'
 import VerificationCode from 'components/VerificationCode/Loadable'
 import HeroOut from '../../components/HeroOut';
