@@ -103,11 +103,11 @@ const LandingTab = () => {
                 </Grid>
                 {value === 0 && 
                 <Fragment>
-                    <SolutionsTab/>
+                    <SolutionsTab type="buyers" />
                 </Fragment>}
                 {value === 1 && 
                 <Fragment>
-                   <SolutionsTab/>
+                   <SolutionsTab type="sellers"/>
                </Fragment>}
             </Grid>
         </Grid>

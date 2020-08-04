@@ -9,7 +9,7 @@ import bgImg from 'images/bg/hero.png'
 import heroImg from 'images/hero-img.png'
 import about from 'images/about.jpg'
 
-const heros = {
+var heros = {
     title: 'Instrumentation is the Foundation',
     titleColor: 'Digital Marketplace',
     text: 'Order Medical Products from Our Verified Suppliers',
@@ -21,6 +21,17 @@ const heros = {
 
 const HeroOut = (props) => {
     const [open, setOpen] = useState(false)
+    const viewer =  props.viewer;
+    switch(viewer) {
+        case "solutions":
+            heros.text="We help you save money, time and efforts by reducing costs and time, and increasing efficiency at each stage";
+            break;
+        case "supplierNetwork":
+            heros.text="Discover a network of verified suppliers from around the globe";
+            break;
+        default:
+            heros.text="Wes help you save money, time and efforts by reducing costs and time, and increasing efficiency at each stage";
+    }
 
     return (<>
         <Grid

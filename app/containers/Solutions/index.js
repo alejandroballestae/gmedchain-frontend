@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Steps } from 'rsuite';
+
 import { Helmet } from 'react-helmet';
 
 // images 
@@ -36,9 +36,9 @@ const Solutions = () => {
                 className="headerAreaStyleTwo"
                 logo={logo}
             />
-
-
-            <HeroOut/>
+            <HeroOut
+                viewer="solutions"
+            />
             <LandingTab />
             <Footer />
         </Fragment>

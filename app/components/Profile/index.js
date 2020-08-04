@@ -8,6 +8,7 @@ import banner from 'images/profile.jpg'
 const Profile = () => {
     return (
         <Grid className="profileWrap">
+
             <img src={banner} alt="" />
             <h4>Hello I am Robert William</h4>
             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, </p>

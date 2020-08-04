@@ -4,8 +4,10 @@ import Swiper from 'react-id-swiper';
 import './style.scss'
 
 // images 
-import slider1 from 'images/slider/img1.jpg'
-import slider2 from 'images/slider/img2.jpg'
+import slider1 from 'images/slider/slider1.jpg'
+import slider2 from 'images/slider/slider2.jpg'
+import slider3 from 'images/slider/slider3.jpg'
+
 
 const HeroSlider = () => {
     const [cetagory, setCetagory] = useState('all')
@@ -29,7 +31,7 @@ const HeroSlider = () => {
         }
     }
 
-    const sliders = [slider1, slider2]
+    const sliders = [slider1, slider2, slider3]
     return (
         <Grid className="heroSliderArea">
             <Grid className="heroContentTwo">

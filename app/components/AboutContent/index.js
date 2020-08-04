@@ -4,7 +4,9 @@ import ModalVideo from 'react-modal-video'
 import './style.scss'
 
 // images 
-import about from 'images/about.jpg'
+import about1 from 'images/about1.jpg'
+import about2 from 'images/about2.jpg'
+import about3 from 'images/about3.jpg'
 
 const aboutStyle = {
     paddingLeft:"60px"
@@ -28,20 +30,10 @@ const AboutContent = () => {
                     </Grid>
                 </Grid>
                 <Grid item lg={6} md={6} xs={12}>
-                    <Grid style={{ background: `url(${about}) no-repeat center center / cover` }} className="aboutImg">
-                        <Button
-                            onClick={() => setOpen(true)}>
-                            <i className="fa fa-play"></i>
-                        </Button>
+                    <Grid style={{ background: `url(${about1}) no-repeat center center / cover` }} className="aboutImg">
                     </Grid>
                 </Grid>
             </Grid>
-            <ModalVideo
-                channel='youtube'
-                isOpen={open}
-                videoId='XOStXaZ25cw'
-                onClose={() => setOpen(false)}
-            />
         </Grid>
         <Grid className="aboutArea">
 
@@ -54,11 +46,7 @@ const AboutContent = () => {
                         onClose={() => setOpen(false)}
                     />
                     <Grid item lg={6} md={6} xs={12}  >
-                        <Grid style={{ background: `url(${about}) no-repeat center center / cover` }} className="aboutImg">
-                            <Button
-                                onClick={() => setOpen(true)}>
-                                <i className="fa fa-play"></i>
-                            </Button>
+                        <Grid style={{ background: `url(${about2}) no-repeat center center / cover` }} className="aboutImg">
                         </Grid>
                     </Grid>
 
@@ -91,11 +79,7 @@ const AboutContent = () => {
                     </Grid>
                 </Grid>
                 <Grid item lg={6} md={6} xs={12}>
-                    <Grid style={{ background: `url(${about}) no-repeat center center / cover` }} className="aboutImg">
-                        <Button
-                            onClick={() => setOpen(true)}>
-                            <i className="fa fa-play"></i>
-                        </Button>
+                    <Grid style={{ background: `url(${about3}) no-repeat center center / cover` }} className="aboutImg">
                     </Grid>
                 </Grid>
             </Grid>

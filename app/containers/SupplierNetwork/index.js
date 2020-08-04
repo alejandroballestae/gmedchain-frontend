@@ -34,7 +34,9 @@ const SupplierNetwork = () => {
                 className="headerAreaStyleTwo"
                 logo={logo}
             />
-            <HeroOut/>
+            <HeroOut 
+                viewer = "supplierNetwork"
+            />
             <Featured />
             <SupplierNetworkContent />
             <Funfact className="funfactAreaStyleTwo" />

@@ -19,9 +19,9 @@ import image6 from 'images/products/products/img6.jpg'
 import image7 from 'images/products/products/img7.jpg'
 import image8 from 'images/products/products/img8.jpg'
 import image9 from 'images/products/products/img9.jpg'
-import image10 from 'images/products/products/img10.jpg'
-import image11 from 'images/products/products/img11.jpg'
-import image12 from 'images/products/products/img12.jpg'
+import image10 from 'images/products/products/img9.jpg'
+import image11 from 'images/products/products/img9.jpg'
+import image12 from 'images/products/products/img9.jpg'
 
 const products = [
     {
