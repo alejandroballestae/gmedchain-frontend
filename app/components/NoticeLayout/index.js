@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import Layout from 'components/Layout';
-import Sidebar from 'components/SideBarAdmin';
+import Sidebar from 'components/SidebarAdmin';
 import PageWrapper from 'components/PageWrapper';
 import SideNav from 'components/SideNav';
 //import { NoticeContext } from '../contexts/notice-context';

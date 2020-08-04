@@ -84,7 +84,7 @@ const theme= {
     margin:'60px',
   }
 };
-import invoicePic from 'images/invoice.JPG'
+import invoicePic from 'images/invoice.jpg'
 export default function Invoice() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
