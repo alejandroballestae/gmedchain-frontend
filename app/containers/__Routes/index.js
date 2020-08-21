@@ -26,6 +26,7 @@ import ShoppingCart from 'containers/ShoppingCart'
 import ShoppingCartTwo from 'containers/ShoppingCartTwo'
 import ShoppingCartThree from 'containers/ShoppingCartThree'
 import OrderPlaced from 'containers/OrderPlaced'
+import RegistrationMessagePage from 'containers/RegistrationMessagePage'
 import ContactSupplierPage from 'containers/ContactSupplierPage'
 import LoginPage from 'containers/LoginPage'
 import RegistrationPage from 'containers/RegistrationPage'
@@ -97,6 +98,11 @@ const Routes = () => {
                 exact
                 path="/supplier-dashboard"
                 component={SupplierDashboard}
+            />
+            <PrivateRoute
+                exact
+                path="/registration-message"
+                component={RegistrationMessagePage}
             />
             <PrivateRoute
                 exact

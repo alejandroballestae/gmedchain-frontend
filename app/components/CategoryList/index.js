@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import './style.scss'
 
-const categorys = [
+const categories = [
     {
         name: 'WordPress',
         value: '25',
@@ -56,7 +56,7 @@ const CategoryList = ({ className }) => {
         <Grid className={className ? `${className} cetagoryWrap` : 'cetagoryWrap'}>
             <h3 className="cetagoryTitle">Categories</h3>
             <ul className="cetagoryList">
-                {categorys.map((item, i) => (
+                {categories.map((item, i) => (
                     <li key={i}>
                         <Link to="/product">
                             {item.name}

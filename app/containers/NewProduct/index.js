@@ -1,54 +1,36 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
-// @material-ui/icons
-import Store from "@material-ui/icons/Store";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Accessibility from "@material-ui/icons/Accessibility";
-import BugReport from "@material-ui/icons/BugReport";
-import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
+
+
 // core components
-import { Tab, Tabs, Button, Select, MenuItem, TextField } from '@material-ui/core'
+import { Button, Select, MenuItem, TextField, FormControl, FormHelperText, Chip, Paper } from '@material-ui/core'
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import Table from "components/Table/Table.js";
-import Tasks from "components/Tasks/Tasks.js";
-import CustomTabs from "components/CustomTabs/CustomTabs.js";
-import Danger from "components/Typography/Danger.js";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
 import NoticeLayout from "components/NoticeLayout";
-import Maps from "views/Maps/Maps.js";
-import { bugs, website, server } from "variables/general.js";
-import { Steps } from 'rsuite';
-import SettingsItem from 'components/SettingsItem/Loadable'
-import TierItem from 'components/TierItem/Loadable'
-import MembershipPlans from 'components/MembershipPlans/Loadable'
+import TierItem from 'components/TierItem/Loadable';
+import CategoryItem from 'components/CategoryItem/Loadable';
+import CertificationItem from 'components/CertificationItem/Loadable';
 import InputLabel from "@material-ui/core/InputLabel";
 
-import {
-  dailySalesChart,
-  emailsSubscriptionChart,
-  completedTasksChart,
-  pieChart
-} from "variables/charts.js";
+
+import { useHistory, Link } from 'react-router-dom';
+import http from 'http.service';
+import { useForm, Controller } from "react-hook-form";
+
 
 import avarar1 from 'images/blogs/avatar1.png'
 import styles from "assets/css/material-dashboard-react.css";
-
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc4NjU5NjMsIm5iZiI6MTU5Nzg2NTk2MywianRpIjoiZGU0OTJmMjctMDYzMi00YTJiLTk0ZWEtNjYyOWZjNDdmOTg0IiwiZXhwIjoxNTk3OTUyMzYzLCJpZGVudGl0eSI6IjVmMzk4ZDQzM2NjZDUyMzRhNDYzNzg1YiIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.t5KzxETRRu6q7QH9WswE9TFPdoMAVLqvQYKLfSUhkSs";
 const useStyles = makeStyles(styles);
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
 
 const theme= {
   root: {
@@ -62,7 +44,7 @@ const theme= {
     float: "right",
   },
   combo:{
-      marginLeft: "200px",
+      marginLeft: "50px",
       marginRight: "200px",
       marginBottom:"0px"
 
@@ -72,29 +54,90 @@ const theme= {
     height:'150px'
   }
 };
+const error = {
+  color: "red"
+}
+const chipStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyle: 'none',
+    margin: 0,
+}
+
 
 export default function Language() {
+  const history = useHistory();
+  const [defaultValues, setListCategories] = useState([]);
+  const [serverErrors, setServerErrors] = useState([]);
+  const [chipData, setChipData] = React.useState([
+    
+  ]);
+  const handleDelete = (chipToDelete) => () => {
+    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    console.log(chipData);
+  };
+ /* const handleAdd = () => () => {
+    setListCategories(defaultValues.concat(addCategory));
+  //  setChipData(chipData.concat({ key: addCategory, label: categories.find(data => data._id === addCategory).name}));
+  };
+*/
+
   const classes = useStyles();
-  let state = {
-    product: {},
-    products: {},
-    value: 0
+
+
+
+  const { register, handleSubmit, watch, errors, setError, control,getValues } = useForm();
+
+  const onSubmit = data => {
+      console.log(data);
+      http.post('/product',data, config).then(res => {
+          console.log(res.data);
+          console.log(JSON.stringify(res.data));
+          Object.keys(res.data).forEach(function(key) {
+              setError(key, {
+                  type: "manual",
+                  message: res.data[key]
+              });
+          });
+          if(res.data.user_id){
+              data.user_id = res.data.user_id;
+              //history.push("/verification",data);
+          }
+      }).catch(error => {
+          if (error.response) {
+              // Request made and server responded
+              console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+              setServerErrors({main:{message:error.response.data['error']}});
+            } else if (error.request) {
+              // The request was made but no response was received
+              console.log(error.request);
+            } else {
+              // Something happened in setting up the request that triggered an Error
+              console.log('Error', error.message);
+            };
+      });
   }
   return (
     <NoticeLayout>
       <br></br>
       <GridContainer justify="center" spacing={2}>
+      <form className="contactForm" onSubmit={handleSubmit(onSubmit)} >
       <h3>New Product</h3>
       <Card style = {theme.combo}>
         <CardBody>
                 <GridItem md = {12} >
-                    <br></br>
-                    
-                <InputLabel id="demo-simple-select-label">Indicate your product</InputLabel>
+                    <br></br>  
+                <InputLabel id="demo-simple-select-label">Product Name</InputLabel>
                         <TextField
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        fullWidth />
+                        fullWidth 
+                        name="name"
+                        inputRef={register}
+                        />
                 </GridItem>    
               <br></br>
           </CardBody>
@@ -124,42 +167,39 @@ export default function Language() {
           <CardBody>
             <GridItem md = {12} >
                 <br></br>
-            <InputLabel id="demo-simple-select-label">Select The Category of your Product</InputLabel>
-                    <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Select Country"
-                    fullWidth
-                
-                    >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                    </Select>
+                  <InputLabel id="demo-simple-select-label">Select the Category of your Product</InputLabel><br></br>
+                  <CategoryItem
+                    {...{ control, register, defaultValues, getValues, errors }}
+                  />
+                  <FormControl
+                      style={{ minWidth: 300 }}
+                      error={Boolean(errors.wordlevel)}
+                      key = {1}
+                  >         
+                  <FormHelperText>
+                  <p >{errors.category && errors.category.message}</p>
+                  </FormHelperText>
+            </FormControl>
+            
+            <span> </span>
+                 
             </GridItem>    
                 <br></br>
-            </CardBody>
-        </Card>
+          </CardBody>
+      </Card>
       <Card style = {theme.combo}>
           <CardBody>
             <GridItem md = {12} >
                 <br></br>
-                
-
-            <InputLabel id="demo-simple-select-label">Type Brand</InputLabel>
-            <TextField
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        fullWidth />
+                <InputLabel id="demo-simple-select-label">Type Brand</InputLabel>
+                <TextField
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  fullWidth 
+                  name = "manufacturing"
+                  inputRef={register}
+                />
             </GridItem>    
-            <GridItem md = {12}  >
-                <br></br>
-            <InputLabel id="demo-simple-select-label">Type Model</InputLabel>
-            <TextField
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        fullWidth />
-            </GridItem> 
             <br></br>
             </CardBody>
         </Card>
@@ -167,12 +207,14 @@ export default function Language() {
            <CardBody>
                 <GridItem md = {12} >
                     <br></br>
-                    
-                <InputLabel id="demo-simple-select-label">Additional Information</InputLabel>
-                        <TextField
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        fullWidth />
+                    <InputLabel id="demo-simple-select-label">Description</InputLabel>
+                    <TextField
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      fullWidth
+                      inputRef={register}
+                      name="description"
+                      />
                 </GridItem>    
               <br></br>
             </CardBody>
@@ -181,12 +223,20 @@ export default function Language() {
            <CardBody>
                 <GridItem md = {12} >
                     <br></br>
-                    
-                <InputLabel id="demo-simple-select-label">Certifications</InputLabel>
-                        <TextField
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        fullWidth />
+                    <InputLabel id="demo-simple-select-label">Select the Certifications of your Product</InputLabel><br></br>
+                  <CertificationItem
+                    {...{ control, register, defaultValues, getValues, errors }}
+                  />
+                  <FormControl
+                      style={{ minWidth: 300 }}
+                      error={Boolean(errors.wordlevel)}
+                      key = {1}
+                  >         
+                      <FormHelperText>
+                      <p >{errors.category && errors.category.message}</p>
+                      </FormHelperText>
+                  </FormControl>
+
                 </GridItem>    
               <br></br>
             </CardBody>
@@ -197,11 +247,11 @@ export default function Language() {
                     <br></br>
                     
                 <InputLabel id="demo-simple-select-label">Price Tiers</InputLabel>
-                    <TierItem></TierItem>
+                    
+                    <TierItem
+                      {...{ control, register, defaultValues, getValues, errors }}
+                    />
                 </GridItem>    
-                <GridItem xs={12} sm={6} md={12} style={theme.control} >
-                     <Button className = "btn" >Add More +</Button>
-                 </GridItem>
               <br></br><br></br>
             </CardBody>
         </Card>
@@ -214,11 +264,13 @@ export default function Language() {
                     
                 </GridItem>    
                 <GridItem xs={12} sm={6} md={12} style={theme.control} >
-                     <Button className = "btn" >Publish Product</Button>
+                      <p style={error}> {serverErrors.main && serverErrors.main.message}</p><br></br>
+                     <Button className = "btn" name = "main"  onClick={handleSubmit((d) => onSubmit(d))}  >Publish Product</Button>
                  </GridItem>
               <br></br><br></br>
             </CardBody>
         </Card>      
+        </form>
       </GridContainer>
       <br></br>
     </NoticeLayout>

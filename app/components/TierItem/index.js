@@ -1,34 +1,15 @@
 import React, { Fragment, Component } from 'react';
-import { Helmet } from 'react-helmet';
 import { Grid, Tab, Tabs, Button,TextField } from '@material-ui/core'
-import { Link } from 'react-router-dom'
-import Swiper from 'react-id-swiper';
-import ModalVideo from 'react-modal-video'
+
 
 // components 
-import Header from 'components/Header/Loadable'
-import Breadcumb from 'components/Breadcumb/Loadable'
-import CategoryList from 'components/CategoryList/Loadable'
-import RecentPost from 'components/RecentPost/Loadable'
-import Quote from 'components/Quote/Loadable'
-import Tags from 'components/Tags/Loadable'
-import CommentItem from 'components/CommentItem/Loadable'
-import PostComment from 'components/PostComment/Loadable'
-import Footer from 'components/Footer/Loadable'
-
+import { useFieldArray } from "react-hook-form";
 import 'containers/BlogPage/style.scss'
 import './style.scss'
 
 // images 
-import logo from 'images/logo.png'
 import image1 from 'images/blogs/img4.jpg'
-import image2 from 'images/blogs/img5.jpg'
-import image3 from 'images/blogs/img6.jpg'
 import avarar1 from 'images/blogs/avatar1.png'
-import avarar2 from 'images/blogs/avatar2.png'
-import avarar3 from 'images/blogs/avatar3.png'
-import author from 'images/author.jpg'
-import Switch from '@material-ui/core/Switch';
 
 const blogs = [
     {
@@ -58,51 +39,73 @@ const totalPrice = {
     float: 'right'
 }
 const itemContainer ={
-    padding: '0px'
-    
+    padding: '0px',
 }
-const control={
+const controlStyle={
     textAlign: "right"
 }
 
-const TierItem = () => {
+let renderCount = 0;
 
+export default function Fields({ control, register, defaultValues, errors }) {
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "test"
+  });
 
-    return (<>
-            <Grid className=" ptb-104" style = {itemContainer}>
-                <Grid container  >
-                    <Grid item md={12} xs={12}>
-                        <Grid className='blogGridWrap'>
-                            <Grid className="blogGridContent">
-                                <Grid className="authorBox">
-                                    <Grid className="authorContent" container>
-                                        <Grid item md={2} xs={2} style = {control}>
-                                            <h4>From</h4>
-                                        </Grid>
+  renderCount++;
+
+  return (
+    <>
+      <ul>
+      <br></br>
+        {fields.map((item, index) => {
+          return (
+            <li key={item.id}>
+
+                <Grid className=" ptb-104" style = {itemContainer}>
+                    <Grid container  >
+                        <Grid item md={12} xs={12}>
+                            <Grid className="authorBox">
+                                <Grid className="authorContent" container>
+                                    <Grid item md={2} xs={2} style = {controlStyle}>
+                                        <h4>From</h4>
+                                    </Grid>
                                         <Grid item md={2} xs={2}  >
-                                                <TextField inputProps={{min: 0, style: { textAlign: 'center' }}}></TextField>
-                                         </Grid>
-                                         <Grid item md={2} xs={2} style = {control}>
+                                                <TextField inputRef={register} name = {`tiers[${index}].start`} inputProps={{min: 0, style: { textAlign: 'center' }}}></TextField>
+                                        </Grid>
+                                        <Grid item md={2} xs={2} style = {controlStyle}>
                                             <h4>to</h4>
                                         </Grid>
                                         <Grid item md={2} xs={2} style = {control}  >
-                                                <TextField inputProps={{min: 0, style: { textAlign: 'center' }}} style={InputClass}></TextField>
-                                         </Grid>
-                                         <Grid item md={2} xs={2} style = {itemCenter}  >
-                                             <h4>=</h4>
-                                         </Grid>
-                                         <Grid item md={2} xs={2}  >
-                                         <TextField inputProps={{min: 0, style: { textAlign: 'center' }}}></TextField>
-                                         </Grid>
+                                                <TextField inputRef={register} name = {`tiers[${index}].end`} inputProps={{min: 0, style: { textAlign: 'center' }}} style={InputClass}></TextField>
+                                        </Grid>
+                                        <Grid item md={2} xs={2} style = {itemCenter}  >
+                                            <h4>=</h4>
+                                        </Grid>
+                                        <Grid item md={2} xs={2}  >
+                                        <TextField inputRef={register} name = {`tiers[${index}].price`} inputProps={{min: 0, style: { textAlign: 'center' }}}></TextField>
+                                        <button type="button" onClick={() => remove(index)}>
+                                            X
+                                        </button>
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </>
-    );
+            </li>
+          );
+        })}
+      </ul>
+<br></br>
+      <Grid xs={12} sm={6} md={12}  >
+        <Button onClick={() => {append({ name: "append" }); }} className = "btn" >
+             Add Tier +
+         </Button>
+      </Grid>
+    
+    </>
+  );
 }
 
-export default TierItem;
