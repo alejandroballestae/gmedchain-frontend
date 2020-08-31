@@ -1,7 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { Route } from 'react-router-dom';
-export class PrivateRoute extends Component {
+import { Route, Redirect} from 'react-router-dom';
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    
+    <Route {...rest} render={(props) => (
+        localStorage.getItem('token').length >10
+        ?  <Component {...props} />
+        :  <Redirect to='/login' />
+    )} />
+  )
+  export default PrivateRoute;
+/*export class PrivateRoute extends Component {
     render() {
+
+
         return (
             <Fragment>
                 <Route
@@ -16,3 +28,4 @@ export class PrivateRoute extends Component {
     }
 }
 export default PrivateRoute;
+*/

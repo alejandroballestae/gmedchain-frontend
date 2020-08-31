@@ -15,7 +15,7 @@ const styles = {
   };
 
 // images
-import main from 'images/solutions/buyers1.jpg' 
+import main from 'images/solutions/s1.png'
 import buyers1 from 'images/solutions/buyers1.jpg' 
 import buyers2 from 'images/solutions/buyers2.jpg' 
 import buyers3 from 'images/solutions/buyers3.jpg' 

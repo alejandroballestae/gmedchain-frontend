@@ -16,7 +16,7 @@ import NewlyAddProducts from 'components/HomeMain/NewlyAddProducts/Loadable'
 import Products from 'components/HomeMain/Products/Loadable'
 import HeroSlider from 'components/HeroSlider/Loadable'
 import Activity from 'components/Activity/Loadable'
-import CalltoAction from 'components/CalltoAction/Loadable'
+import CallToAction from 'components/HomeMain/CallToAction/Loadable'
 import Partners from 'components/HomeMain/Partners/Loadable'
 import Testmonial from 'components/Testmonial/Loadable'
 import Pricing from 'components/Pricing/Loadable'
@@ -37,7 +37,7 @@ const BecomeSeller = () => {
             <Testmonial/>
             <Pricing/>
             <Partners />
-            <CalltoAction />
+            <CallToAction />
             <Footer />
         </Fragment>
     );

@@ -8,13 +8,15 @@ import messages from './messages';
 import Routes from 'containers/__Routes'
 import GlobalStyle from '../../global-styles'
 import 'react-modal-video/css/modal-video.min.css';
+
 const App = () => {
+    
     return (
         <Fragment>
             <Helmet>
                 <title>GMedchain</title>
             </Helmet>
-            <Routes />
+            <Routes ></Routes>
             <ToastContainer position="top-center" />
             <GlobalStyle />
         </Fragment >

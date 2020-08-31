@@ -3,9 +3,9 @@ import { Grid, TextField, MenuItem, Button  } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import bgImg from 'images/bg/hero.jpg'
 import './style.scss'
-const Breadcumb = ({ title, menus }) => {
-    const [cetagory, setCetagory] = useState('all')
-    const [search, setSearch] = useState('')
+const Breadcumb = ({ title, menus, searchText }) => {
+    const [cetagory, setCetagory] = useState('all');
+    const [search, setSearch] = useState(searchText);
     return (
         <Grid className="breadcumbArea">
             <Grid container spacing={4} className="container">
@@ -36,9 +36,9 @@ const Breadcumb = ({ title, menus }) => {
                                 }}
                             >
                                 <MenuItem selected value='all'>All</MenuItem>
-                                <MenuItem value='html'>HTML</MenuItem>
-                                <MenuItem value='PHP'>PHP</MenuItem>
-                                <MenuItem value='wordpress'>Wordpress</MenuItem>
+                                <MenuItem value='html'>PPE-4</MenuItem>
+                                <MenuItem value='PHP'>PPE-5</MenuItem>
+                                <MenuItem value='wordpress'>PPE-7</MenuItem>
                             </TextField>
                             <input
                                 value={search}
@@ -46,7 +46,7 @@ const Breadcumb = ({ title, menus }) => {
                                 type="text"
                                 placeholder="Get Started Now"
                             />
-                            <Button>Search</Button>
+                            <Link to ={{pathname:'/products',state:{searchText:search}}}><Button >Search</Button></Link>
                         </form>
                         </Grid>
                 </Grid>

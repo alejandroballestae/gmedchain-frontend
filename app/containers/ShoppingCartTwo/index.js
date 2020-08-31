@@ -6,19 +6,10 @@ import logo from 'images/logo.png'
 
 // components 
 import Header from 'components/Header/Loadable'
-import Breadcumb from 'components/Breadcumb/Loadable'
-import Featured from 'components/HomeMain/Featured/Loadable'
-import AboutContent from 'components/AboutContent/Loadable'
-import SupplierNetworkContent from 'components/SupplierNetworkContent/Loadable'
-import Team from 'components/Team/Loadable'
-import Funfact from 'components/HomeTwo/Funfact/Loadable'
-import Testmonial from 'components/Testmonial/Loadable'
 import ShoppingCartHeader from 'components/ShoppingCartHeader/Loadable'
 import ShoppingCartForm from 'components/ShoppingCartForm/Loadable'
 import Footer from 'components/Footer/Loadable'
-import HeroOut from '../../components/HeroOut';
-import TotalCheckout from '../../components/TotalCheckout';
-import ShoppingCartItem from '../../components/ShoppingCartItem';
+
 
 
 const menus = [
@@ -44,11 +35,13 @@ const ShoppingCartTwo = () => {
                 />
                 <ShoppingCartHeader             
                     title='Fill Info'
-                    menus={menus} />
-                <ShoppingCartForm  resume = {false}/>
+                    menus={menus} 
+                    current={1}
+                />
+                <ShoppingCartForm  resume = {false} state={[]}/>
             <Footer/> 
         </Fragment>
     );
 }
 
-export default ShoppingCartTwo;
+export default  (ShoppingCartTwo);

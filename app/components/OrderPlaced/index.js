@@ -33,7 +33,7 @@ const OrderPlaced = () => {
                         <Link to="/products"><Button className="btn btnNormal">Back To Market Place</Button></Link>
                 </Grid>
                 <Grid item className="textCenter" xs={6}>
-                        <Link to="/checkout-three"><Button className="btn" > Track Order</Button></Link>
+                        <Link to="/dashboard"><Button className="btn" > Track Order</Button></Link>
                 </Grid>
             </Grid>
         </Grid>

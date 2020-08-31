@@ -10,7 +10,7 @@ import 'rsuite/dist/styles/rsuite-default.css'
 const stepsStyle = {
     BackgroundColor : 'white'
 }
-const ShoppingCartHeader = ({ title, menus }) => {
+const ShoppingCartHeader = ({ title, menus, current }) => {
     const [cetagory, setCetagory] = useState('all')
     const [search, setSearch] = useState('')
     return (
@@ -34,10 +34,10 @@ const ShoppingCartHeader = ({ title, menus }) => {
                     <br></br>
                     <Grid className="heroContentTwo"  >
                         <Grid md={12}>
-                            <Steps current={1}  >
-                                <Steps.Item title="Finished" description="Description" />
-                                <Steps.Item  title="In Progress" description="Description" />
-                                <Steps.Item title="Waiting" description="Description" />
+                            <Steps current={current}  >
+                                <Steps.Item title="Cart Info" description="Check your cart" />
+                                <Steps.Item  title="Additional Info" description="Tell us where" />
+                                <Steps.Item title="Proceed" description="Place Order" />
                             </Steps>    
                         </Grid>
                     </Grid>

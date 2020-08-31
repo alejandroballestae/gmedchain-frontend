@@ -7,7 +7,7 @@ import './style.scss'
 // images 
 import bgImg from 'images/bg/hero.png'
 import heroImg from 'images/hero-img.png'
-import about from 'images/about.jpg'
+import about from 'images/solutions/s1.png'
 
 var heros = {
     title: 'Instrumentation is the Foundation',
@@ -48,7 +48,8 @@ const HeroOut = (props) => {
                     </Grid>
                 </Grid>
                 <Grid item lg={4} md={4} xs={12}  >
-                    <Grid style={{ background: `url(${about}) no-repeat center center / cover` }} className="aboutImg">
+                    <Grid className="">
+                    <img src = {about}></img>
                     </Grid>
                 </Grid>
             </Grid>

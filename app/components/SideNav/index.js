@@ -155,20 +155,18 @@ const SideNav = ({ selected }) => {
       <List className={classes.filterList}>
         {/*<DropDown className={classes.createNewButton} items={createForms} onChange={dropdownOnChange} value={createForm} />*/}
         <Category icon={Inbox} label="Home"  url="/dashboard" />
-        <Category icon={Send} label="Inbox"  url="/inbox" />
+       {/* <Category icon={Send} label="Inbox"  url="/inbox" />*/}
       </List>
 
       <Divider />
 
-
-
       <Divider />
 
       <List className={classes.filterList}>
-        <Category label="RFP or Q" url="/RFP" />
+        {/*<Category label="RFP or Q" url="/RFP" />*/}
         <Category label="Orders" url="/orders" />
-        <Category  label="Invoice" url="/invoice" />
-        <Category  label="Favorites" url="/Favorites" />
+        {/*<Category  label="Invoice" url="/invoice" />
+        <Category  label="Favorites" url="/Favorites" />*/}
       </List>
     </div>
   );

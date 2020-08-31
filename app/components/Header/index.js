@@ -1,16 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect,useCallback } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { injectIntl } from 'react-intl';
-import messages from './messages';
 import { Grid, Menu, Button, TextField, InputAdornment, ExpansionPanelSummary, ExpansionPanelDetails, ExpansionPanel } from '@material-ui/core'
 import ScrollArea from 'react-scrollbar';
 
 import { Link, NavLink } from 'react-router-dom'
-import { createStructuredSelector } from 'reselect';
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors';
+
+
 import { changeLocale } from 'containers/LanguageProvider/actions';
-import makeSelectHeader from './selectors';
+import { addToCart, getCart } from 'containers/cartReducer/actions';
 import './style.scss'
 
 // images 
@@ -18,48 +17,14 @@ import cart1 from 'images/cart/img1.jpg'
 import cart2 from 'images/cart/img2.jpg'
 
 
-const carts = [
-    {
-        image: cart1,
-        name: 'Brown Leather Boots',
-        value: '145.10',
-        id: 1
-    },
-    {
-        image: cart2,
-        name: 'Headphones Pryma',
-        value: '15.10',
-        id: 2
-    },
-    {
-        image: cart1,
-        name: 'Brown Leather Boots',
-        value: '145.10',
-        id: 3
-    },
-    {
-        image: cart2,
-        name: 'Headphones Pryma',
-        value: '15.10',
-        id: 4
-    },
-    {
-        image: cart1,
-        name: 'Brown Leather Boots',
-        value: '145.10',
-        id: 5
-    },
-    {
-        image: cart2,
-        name: 'Headphones Pryma',
-        value: '15.10',
-        id: 6
-    },
-]
-
 const Header = (props) => {
 
 
+
+    useEffect(() => {
+        props.loadValues();
+      }, [props.cartLineState]);
+    
     const menus = [
         {
             name: 'Solutions',
@@ -92,12 +57,23 @@ const Header = (props) => {
     const [openSearch, setSearch] = useState(null);
     const [expanded, setExpanded] = useState('0');
     const [menu, setMenu] = useState(false);
+    const [products, setProducts] = useState([]);
 
+    console.log('HEADERRRRRRRRRRRRRRR');
+    console.log(localStorage.getItem("token"));
+    console.log('---------------------');
+
+ 
     const handleChange = panel => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
-
+    const handleUpdate = (event) => {
+        event.preventDefault();
+        alert('paso');
+    };
+ 
     const handleClickCart = event => {
+        
         setCart(event.currentTarget);
     };
 
@@ -117,11 +93,14 @@ const Header = (props) => {
         setMenu(!menu)
     }
 
+    
     const logoStyle = {
         paddingLeft: "0px",
         paddingRight: "0px"
     };
+
     return (
+   
         <header className={props.className ? `${props.className} headerArea` : 'headerArea'}>
             <Grid
                 container
@@ -147,10 +126,10 @@ const Header = (props) => {
                     <ul className="headerRight d-none">
                         <li onClick={handleClickCart}>
                             <i className="fi flaticon-bag"></i>
-                            <span className="value">{carts.length < 10 ? `0${carts.length}` : carts.length}</span>
+                            {/*<span className="value">{cartLineState && cartLineState.length < 10 ? `0${cartLineState && cartLineState.length}` : cartLineState && cartLineState.length}</span>*/}
                         </li>
                         <li onClick={handleClickSearch}><i className="fi flaticon-magnifying-glass"></i></li>
-                        <li><Link to="/login"><Button className="btn">Login</Button></Link></li>
+                        <li>{ localStorage.getItem('token').length >10 ? <Link to={localStorage.getItem('type')=='Buyer'?"/dashboard":"/supplier-dashboard"}><Button className="btn">Dashboard</Button></Link>:<Link to="/login"><Button className="btn">Login</Button></Link>}</li>
                     </ul>
                     <Menu
                         anchorEl={openSearch}
@@ -215,26 +194,26 @@ const Header = (props) => {
                                 contentClassName="scrollbarContent"
                                 horizontal={false}
                             >
-                                <ul className="cartItems">
-                                    {carts.map((item, i) => (
+                                <ul className="cartItems" onChange = {(e)=>{handleUpdate(e)}}>
+                                    {props.cartProducts && props.cartProducts.map((item, i) => (
                                         <li key={i}>
                                             <Button
                                                 className="cartItem"
                                                 component={Link}
                                                 to="/product-details">
                                                 <span className="cartImg">
-                                                    <img src={item.image} alt="" />
+                                                    <img src={cart1} alt="" />
                                                 </span>
                                                 <span className="cartContent">
                                                     <h4>{item.name}</h4>
-                                                    <span>{`$${item.value}`}</span>
+                                                    <span>{`$${item.tiers[0].price}`}</span>
                                                 </span>
                                             </Button>
                                         </li>
                                     ))}
                                 </ul>
                             </ScrollArea>
-                            <h3>$150.10</h3>
+                            <br></br>
                             <Button className="btn btnFull" component={Link} to="/cart"> View cart </Button>
                         </li>
                     </Menu>
@@ -273,14 +252,20 @@ const Header = (props) => {
     );
 }
 
-const mapStateToProps = createStructuredSelector({
+/*const mapStateToProps = createStructuredSelector({
     headerComponent: makeSelectHeader(),
     locale: makeSelectLocale(),
-});
-
+    items:makeSelectItems(),
+    cartProducts:makeSelectCartProducts()
+});*/
+function mapStateToProps(state) {
+    return { cartProducts: state.cart.cartProducts.products }
+}
 function mapDispatchToProps(dispatch) {
     return {
         changeLocale: locale => dispatch(changeLocale(locale)),
+        loadValues: () => dispatch(getCart())
+          
     };
 }
 

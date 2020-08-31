@@ -4,9 +4,9 @@ import Swiper from 'react-id-swiper';
 import './style.scss'
 
 // images 
-import slider1 from 'images/slider/slider1.jpg'
-import slider2 from 'images/slider/slider2.jpg'
-import slider3 from 'images/slider/slider3.jpg'
+import slider1 from 'images/slider/slider.png'
+import slider2 from 'images/slider/slider2.png'
+import slider3 from 'images/slider/slider3.png'
 
 
 const HeroSlider = () => {
@@ -36,9 +36,9 @@ const HeroSlider = () => {
         <Grid className="heroSliderArea">
             <Grid className="heroContentTwo">
                 <Grid container className="container" spacing={4}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style ={{'textAlign':'center'}} >
                         <h2>Start Your <span>Digital Marketplace</span> Today!</h2>
-                        <p>The Biggest Marketplace for Digital Product & the powerful, template</p>
+                        <p>The Biggest Marketplace for Digital Product & the powerful</p>
                         <form className="heroForm">
                             <TextField
                                 select

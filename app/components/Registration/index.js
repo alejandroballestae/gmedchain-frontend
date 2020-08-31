@@ -27,6 +27,9 @@ const centerText = {
 const textColor = {
     color: "blue"
 }
+const error = {
+    color: "red"
+}
 const labelStyle = {
     padding: "20px"
 }

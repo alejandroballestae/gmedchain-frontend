@@ -4,6 +4,8 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
+import axiosMiddleware from 'redux-axios-middleware';
+import http from 'http.service';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
@@ -27,12 +29,10 @@ export default function configureStore(initialState = {}, history) {
     /* eslint-enable */
   }
 
-  const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
-
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [axiosMiddleware(http), routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
 
@@ -43,7 +43,7 @@ export default function configureStore(initialState = {}, history) {
   );
 
   // Extensions
-  store.runSaga = sagaMiddleware.run;
+
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry
 

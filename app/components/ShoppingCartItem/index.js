@@ -1,6 +1,6 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Grid, Tab, Tabs, Button } from '@material-ui/core'
+import { Grid, Tab, Tabs, Button, TextField} from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import Swiper from 'react-id-swiper';
 import ModalVideo from 'react-modal-video'
@@ -46,6 +46,11 @@ const cartItem ={
     margin: '33.33px'
     
 }
+const box ={
+    marginBottom: '5px',
+    marginTop:'5px'
+    
+}
 const totalPrice = {
     float: 'right'
 }
@@ -53,51 +58,63 @@ const itemContainer ={
     padding: '0px'
     
 }
-const ShoppingCartItem= () => {
 
-
+const ShoppingCartItem = (props) => {
+    
+    const {id, name, description, tiers }  = props;
+    const [quantity, setQuantity] = useState(props.quantity);
+    const [price,setPrice] = useState((tiers[0].price*quantity).toLocaleString());
+    const [deleted,setDeleted] = useState(false);
+    
+    function handleChange(event) {
+        // Here, we invoke the callback with the new value
+        setQuantity(parseInt(event.target.value));    
+        setPrice((event.target.value*tiers[0].price).toLocaleString());
+        props.onChange(event.target.value,id);
+    }
+    function deleteItem(event) {
+        // Here, we invoke the callback with the new value
+        setQuantity(0);
+        setPrice((0*tiers[0].price).toLocaleString());
+        props.onChange(0,id);
+        setDeleted(true);
+    }
     return (<>
-
-                <Grid className="blogDetailsArea ptb-104" style = {itemContainer}>
-                    <Grid container  className="container">
-                        <Grid item md={12} xs={12}>
-                            <Grid className='blogGridWrap'>
-                                <Grid className="blogGridContent">
-                                    <Grid className="authorBox">
-                                        <Grid className="authorContent" container>
-                                             <Grid className="authorImg"  md={3} xs={3}> 
-                                                 <img src={author} alt="" />
-                                             </Grid>
-                                            <Grid item md={2} xs={2}>
-
-                                            <h4>Product Name</h4>
-                                            <p>Detail of the selected product</p>
-                                            <ul className="socialLink">
-                                                <li><a href="#"><i className="ti-trash"></i></a></li>
-                                                <li><a href="#"><i className="ti-plus"></i></a></li>
-                                            </ul>
+        {deleted?<></>:
+            <Grid className=" ptb-104" style = {itemContainer}>
+                <Grid container  className="container">
+                    <Grid item md={12} xs={12}>
+                        <Grid >
+                            <Grid className="blogGridContent">
+                                <Grid className="authorBox" style ={box}>
+                                    <Grid className="authorContent" container alignItems="center">
+                                            <Grid className="authorImg"  md={3} xs={3}> 
+                                                <img src={author} alt="" />
                                             </Grid>
-                                            <Grid item md={1} xs={1} style = {cartItem}><p>213123</p></Grid>
-                                            <Grid item md={2} xs={2}>           
-                                            <h4>USD  0.00/Unit </h4>
-                                            <p>Price Tier
-                                            <br/>0 - 500  USD 0.00
-                                            <br/>501 - 2000  USD 0.00
-                                            <br/>001 - +  USD 0.00</p>
-                                            </Grid>
-                                            <Grid item md={2} xs={2}  ><h4 style ={totalPrice}>USD  0.00 </h4></Grid>
+                                        <Grid item md={2} xs={2}>
+                                        <h4>{name}</h4>
+                                        <p>{description}</p>
+                                        <ul className="socialLink">
+                                            <li><a href="#" onClick = {deleteItem}><i className="ti-trash"></i></a></li>
+                                        </ul>
                                         </Grid>
+                                        <Grid item md={1} xs={1} style = {cartItem}><p><TextField value = {quantity} onChange={handleChange} name = {`tiers[${id}].start`} inputProps={{min: 0, style: { textAlign: 'center' }}} disabled={ props.resume }></TextField>units</p></Grid>
+                                        <Grid item md={2} xs={2}>           
+                                        <p>Price Tier</p>
+                                        {tiers.map( (tier,i) =>(
+                                            <p>{tier.start} - {tier.end}  USD {tier.price}<br></br></p>
+                                
+                                        ))}
+                                        </Grid>
+                                        <Grid item md={3} xs={3} ><h4 style ={totalPrice}>USD {price} </h4></Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
-
                     </Grid>
                 </Grid>
-
-
+            </Grid>}
         </>
     );
 }
-
 export default ShoppingCartItem;

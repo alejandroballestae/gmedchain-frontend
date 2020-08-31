@@ -44,9 +44,7 @@ const LoginPage = () => {
                     className="headerAreaStyleTwo"
                     logo={logo}
                 />
-  
-                <Login />
-                    
+                <Login />                    
             <Footer/> 
         </Fragment>
     );

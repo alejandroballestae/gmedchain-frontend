@@ -42,10 +42,13 @@ const ShoppingCartTwo = () => {
                 <Header
                     className="headerAreaStyleTwo"
                     logo={logo}
+                    
                 />
                 <ShoppingCartHeader             
                     title='Order Placed'
-                    menus={menus} />
+                    menus={menus} 
+                    current={2}
+                />
                 <OrderPlaced />
                     
             <Footer/> 

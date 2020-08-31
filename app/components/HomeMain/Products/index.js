@@ -11,9 +11,6 @@ import './style.scss'
 import image1 from 'images/products/img1.jpg'
 import image2 from 'images/products/img2.jpg'
 import image3 from 'images/products/img3.jpg'
-import image4 from 'images/products/img4.jpg'
-import image5 from 'images/products/img5.jpg'
-import image6 from 'images/products/img6.jpg'
 
 const products = [
     {
@@ -48,7 +45,7 @@ const products = [
     }
 ]
 
-const Products = () => {
+const Products = (props) => {
     const [value, setValue] = useState(0);
 
     function handleChange(event, newValue) {
@@ -95,6 +92,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -111,6 +109,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -127,6 +126,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -143,6 +143,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -159,6 +160,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -175,6 +177,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -191,6 +194,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}
@@ -207,6 +211,7 @@ const Products = () => {
                                 author={product.author}
                                 review={product.review}
                                 price={product.price}
+		                        addProductToCartHandler={props.addProductToCartHandler}
                             />
                         </Grid>
                     ))}

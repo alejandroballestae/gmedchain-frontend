@@ -4,9 +4,9 @@ import { Grid, Button, TextField} from '@material-ui/core'
 import './style.scss'
 import { useForm } from "react-hook-form";
 import http from 'http.service';
-import logo from 'images/logo.png';
 
 import { useHistory, Link } from 'react-router-dom';
+
 
 const centerText = {
     textAlign:"center"
@@ -28,9 +28,19 @@ const Login = (props) => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit =  data => {
         http.post('/login',data).then(res => {
-            console.log(res);
-            console.log(res.data);
-            history.push("/dashboard");
+            const { token, type } = res.data;
+            console.log("Local Storage223 ---------");
+            localStorage.setItem('token', token);
+            localStorage.setItem('type', type);
+            console.log(localStorage.getItem('token'));
+            console.log(localStorage.getItem('type'));
+            console.log(localStorage.getItem('type') == 'Buyer');
+            if(localStorage.getItem('type') == 'Buyer'){
+                history.push("/dashboard");
+            }else{
+                history.push("/supplier-dashboard");
+            }
+            
         }).catch(error => {
             if (error.response) {
                 // Request made and server responded
@@ -46,7 +56,6 @@ const Login = (props) => {
                 console.log('Error', error.message);
               };
         });
-        console.log("paso------------");
     }
       
     return (

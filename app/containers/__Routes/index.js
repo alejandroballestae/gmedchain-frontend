@@ -3,17 +3,23 @@ import { Switch, Route } from 'react-router-dom';
 
 // routes 
 import PrivateRoute from 'containers/_PrivateRoute'
+import SupplierPrivateRoute from 'containers/_SupplierPrivateRoute'
+import BuyerPrivateRoute from 'containers/_BuyerPrivateRoute'
+import PublicRoute from 'containers/_PublicRoute'
+
 
 // components 
 
 // homes 
 import HomePage from 'containers/HomePage/Loadable'
 import HomeStyleTwo from 'containers/HomeStyleTwo'
+import HomeThreeStyle from 'containers/HomeThreeStyle/Loadable'
+
 import BecomeSeller from 'containers/BecomeSeller'
 import SupplierNetwork from 'containers/SupplierNetwork'
 import Solutions from 'containers/Solutions'
 
-import HomeThreeStyle from 'containers/HomeThreeStyle/Loadable'
+
 import AboutUs from 'containers/AboutUs/Loadable'
 import Author from 'containers/Author/Loadable'
 import CategoryPage from 'containers/CategoryPage/Loadable'
@@ -21,14 +27,14 @@ import ProductDetails from 'containers/ProductDetails/Loadable'
 import BlogPage from 'containers/BlogPage/Loadable'
 import BlogDetails from 'containers/BlogDetails/Loadable'
 import ContactPage from 'containers/ContactPage/Loadable'
-import ErrorPage from 'containers/ErrorPage/Loadable'
+
 import ShoppingCart from 'containers/ShoppingCart'
 import ShoppingCartTwo from 'containers/ShoppingCartTwo'
 import ShoppingCartThree from 'containers/ShoppingCartThree'
 import OrderPlaced from 'containers/OrderPlaced'
 import RegistrationMessagePage from 'containers/RegistrationMessagePage'
 import ContactSupplierPage from 'containers/ContactSupplierPage'
-import LoginPage from 'containers/LoginPage'
+
 import RegistrationPage from 'containers/RegistrationPage'
 import VerificationCodePage from 'containers/VerificationCodePage'
 import Dashboard from 'containers/Dashboard'
@@ -50,16 +56,19 @@ import NewProduct from 'containers/NewProduct'
 import CRM from 'containers/CRM'
 import CRMDetail from 'containers/CRMDetail'
 import Inventory from 'containers/Inventory'
+import LoginPage from 'containers/LoginPage'
+import ErrorPage from 'containers/ErrorPage/Loadable'
 
-const Routes = () => {
+const Routes = (props) => {
     return (
         <Switch>
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/"
                 component={HomePage}
+                
             />
-            <PrivateRoute
+           <PrivateRoute
                 exact
                 path="/home-two"
                 component={HomeStyleTwo}
@@ -69,12 +78,12 @@ const Routes = () => {
                 path="/home-three"
                 component={HomeThreeStyle}
             />
-           <PrivateRoute
+          { <PublicRoute
                 exact
                 path="/login"
                 component={LoginPage}
-            />
-           <PrivateRoute
+          />}
+            <BuyerPrivateRoute
                 exact
                 path="/dashboard"
                 component={Dashboard}
@@ -94,12 +103,12 @@ const Routes = () => {
                 path="/inbox"
                 component={Inbox}
             />
-           <PrivateRoute
+           <SupplierPrivateRoute
                 exact
                 path="/supplier-dashboard"
                 component={SupplierDashboard}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/registration-message"
                 component={RegistrationMessagePage}
@@ -164,7 +173,7 @@ const Routes = () => {
                 path="/social"
                 component={SocialMedia}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/verification"
                 component={VerificationCodePage}
@@ -174,12 +183,12 @@ const Routes = () => {
                 path="/inventory"
                 component={Inventory}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/registration"
                 component={RegistrationPage}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/BecomeSeller"
                 component={BecomeSeller}
@@ -204,12 +213,12 @@ const Routes = () => {
                 path="/contact-supplier"
                 component={ContactSupplierPage}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/SupplierNetwork"
                 component={SupplierNetwork}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/Solutions"
                 component={Solutions}
@@ -219,17 +228,17 @@ const Routes = () => {
                 path="/cart"
                 component={ShoppingCart}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/about"
                 component={AboutUs}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/author"
                 component={Author}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/products"
                 component={CategoryPage}
@@ -239,22 +248,22 @@ const Routes = () => {
                 path="/settings"
                 component={Settings}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/product-details/:id"
                 component={ProductDetails}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/blog"
                 component={BlogPage}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/blog-details/:id"
                 component={BlogDetails}
             />
-            <PrivateRoute
+            <PublicRoute
                 exact
                 path="/contact"
                 component={ContactPage}

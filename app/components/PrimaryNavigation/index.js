@@ -1,109 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import { compose } from 'redux';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 import { Grid, Menu, Button, TextField, InputAdornment, ExpansionPanelSummary, ExpansionPanelDetails, ExpansionPanel } from '@material-ui/core'
-import Chip from '@material-ui/core/Chip';
 import ScrollArea from 'react-scrollbar';
-import cart1 from 'images/cart/img1.jpg'
-import cart2 from 'images/cart/img2.jpg'
 import './style.scss'
+import {  getCart } from 'containers/cartReducer/actions';
+import cart1 from 'images/cart/img1.jpg'
 
-const carts = [
-  {
-      image: cart1,
-      name: 'Brown Leather Boots',
-      value: '145.10',
-      id: 1
-  },
-  {
-      image: cart2,
-      name: 'Headphones Pryma',
-      value: '15.10',
-      id: 2
-  },
-  {
-      image: cart1,
-      name: 'Brown Leather Boots',
-      value: '145.10',
-      id: 3
-  },
-  {
-      image: cart2,
-      name: 'Headphones Pryma',
-      value: '15.10',
-      id: 4
-  },
-  {
-      image: cart1,
-      name: 'Brown Leather Boots',
-      value: '145.10',
-      id: 5
-  },
-  {
-      image: cart2,
-      name: 'Headphones Pryma',
-      value: '15.10',
-      id: 6
-  },
-]
-const notifications = [
-    {
-        image: cart1,
-        name: 'Complete your profile info',
-        value: '1 min ago',
-        id: 1
-    },
-    {
-        image: cart2,
-        name: 'Answer your RFP',
-        value: '4 hours ago',
-        id: 2
-    },
-    {
-        image: cart1,
-        name: 'Your order is arrived the airport',
-        value: 'yesturday',
-        id: 3
-    },
-    {
-        image: cart2,
-        name: 'You are getting out of stock',
-        value: '6 days ago',
-        id: 4
-    },
-
-  ]
-
-  const messages = [
-    {
-        image: cart1,
-        name: 'Alejandro',
-        value: 'Hi guys we are',
-        id: 1
-    },
-    {
-        image: cart2,
-        name: 'Derek',
-        value: 'Hi guys we are',
-        id: 2
-    },
-    {
-        image: cart1,
-        name: 'Miriam',
-        value: 'Hi guys we are',
-        id: 3
-    },
-    {
-        image: cart2,
-        name: 'Juan',
-        value: 'Hi guys we are',
-        id: 4
-    },
-
-  ]
 const useStyles = makeStyles(theme => ({
   appBar: {
     boxShadow: '0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04)',background: 'white',
@@ -164,15 +71,19 @@ const PrimaryNavigation = (props) => {
   const [openCart, setCart] = useState(null);
   const [openNotifications, setNotifications] = useState(null);
   const [openMessages, setMessages] = useState(null);
-  const [openSearch, setSearch] = useState(null);
-  const [expanded, setExpanded] = useState('0');
   const [menu, setMenu] = useState(false);
+  const history = useHistory();
+  
+  useEffect(() => {
+    props.loadValues();
+  }, [props.cartLineState]);
 
   const handleCloseMessages = () => {
     setMessages(null);
   };
   const handleClickMessages = event => {
-    setMessages(event.currentTarget);
+    localStorage.setItem('token',null);
+    history.push('/login');
   };
   const handleCloseNotifications = () => {
     setNotifications(null);
@@ -187,6 +98,8 @@ const PrimaryNavigation = (props) => {
   const handleClickCart = event => {
     setCart(event.currentTarget);
   };
+  console.log('interally-------------------');
+  console.log(localStorage.getItem('Token'));
   return (
 
       <AppBar className={`${classes.appBar}`}  position="fixed" elevation={0}>
@@ -215,11 +128,11 @@ const PrimaryNavigation = (props) => {
                     <ul className="headerRight d-none">
                         <li onClick={handleClickCart}  >
                             <i className="fi flaticon-bag black" ></i>
-                            <span className="value">{carts.length < 10 ? `0${carts.length}` : carts.length}</span>
+                            {/*<span className="value">{/*carts.length < 10 ? `0${carts.length}` : carts.length}</span>*/}
                         </li>
-                        <li ><Link to ="/settings"><i className="fi flaticon-menu black" ></i></Link></li>
-                        <li onClick={handleClickNotifications} ><i className="fi flaticon-mail black"></i></li>
-                        <li onClick={handleClickMessages} ><i className="fi flaticon-quote black"></i></li>
+                        <li ><Link to ="/profile"><i className="fi flaticon-menu black" ></i></Link></li>
+                        {/*<li onClick={handleClickNotifications} ><i className="fi flaticon-mail black"></i></li>*/}
+                        <li onClick={handleClickMessages} class = {classes.icons}>logout</li>
                         {/*<li ><Link to ="/profile"><i className="fi flaticon-chat black"></i></Link></li>*/}
                     </ul>
 
@@ -285,25 +198,24 @@ const PrimaryNavigation = (props) => {
                                 horizontal={false}
                             >
                                 <ul className="cartItems">
-                                    {carts.map((item, i) => (
+                                {props.cartProducts && props.cartProducts.map((item, i) => (
                                         <li key={i}>
                                             <Button
                                                 className="cartItem"
                                                 component={Link}
                                                 to="/product-details">
                                                 <span className="cartImg">
-                                                    <img src={item.image} alt="" />
+                                                    <img src={cart1} alt="" />
                                                 </span>
                                                 <span className="cartContent">
                                                     <h4>{item.name}</h4>
-                                                    <span>{`${item.value}`}</span>
+                                                    <span>{`$${item.tiers[0].price}`}</span>
                                                 </span>
                                             </Button>
                                         </li>
                                     ))}
                                 </ul>
                             </ScrollArea>
-                            <h3>$150.10</h3>
                             <Button className="btn btnFull" component={Link} to="/cart"> View cart </Button>
                         </li>
                     </Menu>
@@ -337,22 +249,6 @@ const PrimaryNavigation = (props) => {
                                 horizontal={false}
                             >
                                 <ul className="cartItems">
-                                    {messages.map((item, i) => (
-                                        <li key={i}>
-                                            <Button
-                                                className="cartItem"
-                                                component={Link}
-                                                to="/product-details">
-                                                <span className="cartImg">
-                                                    <img src={item.image} alt="" />
-                                                </span>
-                                                <span className="cartContent">
-                                                    <h4>{`${item.name} says:`}</h4>
-                                                    <span>{`${item.value}`}</span>
-                                                </span>
-                                            </Button>
-                                        </li>
-                                    ))}
                                 </ul>
                             </ScrollArea>
                             
@@ -389,22 +285,7 @@ const PrimaryNavigation = (props) => {
                                 horizontal={false}
                             >
                                 <ul className="cartItems">
-                                    {notifications.map((item, i) => (
-                                        <li key={i}>
-                                            <Button
-                                                className="cartItem"
-                                                component={Link}
-                                                to="/product-details">
-                                                <span className="cartImg">
-                                                    <img src={item.image} alt="" />
-                                                </span>
-                                                <span className="cartContent">
-                                                    <h4>{item.name}</h4>
-                                                    <span>{`${item.value}`}</span>
-                                                </span>
-                                            </Button>
-                                        </li>
-                                    ))}
+ 
                                 </ul>
                             </ScrollArea>
                             
@@ -413,17 +294,6 @@ const PrimaryNavigation = (props) => {
                         <Button className="btn btnFull" component={Link} to="/cart"> View Messages </Button>
                     </Menu>
                 </Grid>
-
-
-
-
-
-
-
-
-
-
-
 
             <Grid item md={1} sm={1} xs={2} className="responsiveMenuTrigger">
                 <ul className={menu ? 'responsiveMenuTriggerItem active' : 'responsiveMenuTriggerItem'}>
@@ -437,5 +307,19 @@ const PrimaryNavigation = (props) => {
       </AppBar>
   );
 }
+function mapStateToProps(state) {
+    return { cartProducts: state.cart.cartProducts.products }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        changeLocale: locale => dispatch(changeLocale(locale)),
+        loadValues: () => dispatch(getCart())
+          
+    };
+}
 
-export default PrimaryNavigation;
+const withConnect = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+);
+export default compose(withConnect)(PrimaryNavigation);

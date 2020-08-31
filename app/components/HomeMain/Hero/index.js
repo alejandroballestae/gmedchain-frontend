@@ -7,7 +7,7 @@ import './style.scss'
 // images 
 import bgImg from 'images/bg/hero.png'
 import heroImg from 'images/hero-img.png'
-
+import { Link, NavLink } from 'react-router-dom'
 const heros = {
     title: 'Instrumentation is the Foundation',
     titleColor: 'Digital Marketplace',
@@ -35,27 +35,15 @@ const Hero = (props) => {
                         <h2>{heros.title} <span>{heros.titleColor}</span></h2>
                         <p>{heros.text}</p>
                         <ul>
-                            <li><Button className="btn">{heros.btn}</Button></li>
-                            <li><Button className="btn btnNormal">{heros.btn2}</Button></li>
+                            <li> <Link to="/registration" ><Button className="btn">{heros.btn}</Button></Link></li>
+                            <li> <Link to="/registration" ><Button className="btn btnNormal">{heros.btn2}</Button></Link></li>
                         </ul>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid className="heroImg">
-                <img src={heros.heroImg} alt="" />
-                <Button
-                    onClick={() => setOpen(true)}>
-                    <i className="fa fa-play"></i>
-                </Button>
-            </Grid>
 
         </Grid>
-        <ModalVideo
-        channel='youtube'
-        isOpen={open}
-        videoId='XOStXaZ25cw'
-        onClose={() => setOpen(false)}
-        />
+
                 </>
     );
 }

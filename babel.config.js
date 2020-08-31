@@ -23,6 +23,7 @@ module.exports = {
         '@babel/plugin-transform-react-constant-elements',
       ],
     },
+    
     test: {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
