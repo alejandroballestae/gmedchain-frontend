@@ -9,7 +9,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 
 import { changeLocale } from 'containers/LanguageProvider/actions';
-import { addToCart, getCart } from 'containers/cartReducer/actions';
+import { addToCart, getCart } from 'containers/CartReducer/actions';
 import './style.scss'
 
 // images 

@@ -8,7 +8,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { Grid, Menu, Button, TextField, InputAdornment, ExpansionPanelSummary, ExpansionPanelDetails, ExpansionPanel } from '@material-ui/core'
 import ScrollArea from 'react-scrollbar';
 import './style.scss'
-import {  getCart } from 'containers/cartReducer/actions';
+import {  getCart } from 'containers/CartReducer/actions';
 import cart1 from 'images/cart/img1.jpg'
 
 const useStyles = makeStyles(theme => ({
