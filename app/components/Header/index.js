@@ -129,7 +129,7 @@ const Header = (props) => {
                             {/*<span className="value">{cartLineState && cartLineState.length < 10 ? `0${cartLineState && cartLineState.length}` : cartLineState && cartLineState.length}</span>*/}
                         </li>
                         <li onClick={handleClickSearch}><i className="fi flaticon-magnifying-glass"></i></li>
-                        <li>{ localStorage.getItem('token').length >10 ? <Link to={localStorage.getItem('type')=='Buyer'?"/dashboard":"/supplier-dashboard"}><Button className="btn">Dashboard</Button></Link>:<Link to="/login"><Button className="btn">Login</Button></Link>}</li>
+                        <li>{ localStorage.getItem('token') && localStorage.getItem('token').length >10 ? <Link to={localStorage.getItem('type')=='Buyer'?"/dashboard":"/supplier-dashboard"}><Button className="btn">Dashboard</Button></Link>:<Link to="/login"><Button className="btn">Login</Button></Link>}</li>
                     </ul>
                     <Menu
                         anchorEl={openSearch}
