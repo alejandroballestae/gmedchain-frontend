@@ -15,7 +15,7 @@ export const GET_CART = 'GET_CART';
 export const GET_CART_SUCCESS = 'GET_CART_SUCCESS';
 export const GET_CART_FAIL = 'GET_CART_FAIL';
 
-export const Actions =
+export const actions =
     {
         type: 'GET_CART',
         payload: {
