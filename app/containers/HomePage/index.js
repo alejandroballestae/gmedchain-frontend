@@ -11,16 +11,16 @@ import logo from 'images/logo.png'
 // components 
 import Header from 'components/Header/Loadable'
 import Hero from 'components/HomeMain/Hero/Loadable'
-import Featured from 'components/HomeMain/Featured/Loadable'
-import NewlyAddProducts from 'components/HomeMain/NewlyAddProducts/Loadable'
-import CallToAction from 'components/HomeMain/CallToAction/Loadable'
+
+
+
 import Products from 'components/HomeMain/Products/Loadable'
+import NewlyAddProducts from 'components/HomeMain/NewlyAddProducts/Loadable'
 import Activity from 'components/Activity/Loadable'
 import Partners from 'components/HomeMain/Partners/Loadable'
-import Testmonial from 'components/Testmonial/Loadable'
-import Pricing from 'components/Pricing/Loadable'
-import Blog from 'components/Blog/Loadable'
+import CallToAction from 'components/HomeMain/CallToAction/Loadable'
 import Footer from 'components/Footer/Loadable'
+import Featured from 'components/HomeMain/Featured/Loadable'
 
 const HomePage = () => {
     const addProductToCartHandler = (id) => {
@@ -52,7 +52,6 @@ const HomePage = () => {
                 logo={logo}
             />
             <Hero />
-            <Products addProductToCartHandler = {addProductToCartHandler} />
             <Featured />
             <NewlyAddProducts />
             <Activity />
@@ -69,9 +68,6 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-const withConnect = connect(
-    null,
-    mapDispatchToProps,
-);
 
-export default compose(withConnect)(injectIntl(HomePage));
+
+export default HomePage;

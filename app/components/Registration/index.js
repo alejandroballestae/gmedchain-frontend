@@ -19,6 +19,17 @@ async function getCountries(){
     return response;
 }
 
+async function getUser(){
+    const response = await http.get('/user').then(data => {
+        console.log("dataaa Calllll");
+        console.log(data);
+        return data;
+    }).catch(error => {
+        console.error(error);
+    })
+    return response;
+}
+
 
 const centerText = {
     textAlign:"center"
@@ -33,53 +44,128 @@ const error = {
 const labelStyle = {
     padding: "20px"
 }
+
+
 const Registration = (props) => {
     const history = useHistory();
     const [isBusy, setBusy] = useState(true);
     const [countries, setCountries] = useState([]);
+    const [first, setFirst] = useState("");
+    const [last, setLast] = useState("");
+    const [company, setCompany] = useState("");
+    const [type, setType] = useState("");
+    const [country, setCountry] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [pin, setPin] = useState("");
+    const [email, setEmail] = useState("");
+    const [userData, setUserData] = useState("");
     const [serverErrors, setServerErrors] = useState([]);
+    const { register, handleSubmit, watch, errors, setError, control, setValue } = useForm();
 
     useEffect(()=>{
-        async function countriesCall(){
+        async function dataCall(){
             setBusy(true);
             const response = await getCountries();
             setCountries(response.data.country_names);
-            setBusy(false) ;
+           
+            if(props.update){
+    
+                const response2 =  await getUser();
+                setBusy(false);
+                var formData = response2.data[0];
+                console.log("------------------sd-sdsdsds-dsdsd"); 
+                console.log(response2.data);    
+                setFirst(formData.name.first);
+                setLast(formData.name.last);
+                setCompany(formData.company_name);
+                setType(formData.type);
+                setPhone(formData.phone);
+                setAddress(formData.address.address);
+                setCity(formData.address.city);
+                setCountry(formData.address.country);
+                setValue("country", formData.address.country );
+                setState(formData.address.state);
+                setPin(formData.address.pin);
+                setEmail(formData.email);
+             
+            }
+            
         }
-        countriesCall();
+ 
+        dataCall();
     },[]);
 
-    const { register, handleSubmit, watch, errors, setError, control } = useForm();
+
 
     const onSubmit = data => {
-        http.post('/signup',data).then(res => {
-            console.log(res.data);
-            console.log(JSON.stringify(res.data));
-            Object.keys(res.data).forEach(function(key) {
-                setError(key, {
-                    type: "manual",
-                    message: res.data[key]
+        if(props.update){
+            if(localStorage.getItem('type')=='buyer'){
+                http.put('/user',data).then(res => {
+                    console.log("-------UPDATE--------------");
+                    console.log(res.data);
+                    console.log("---------------------");
+                    Object.keys(res.data).forEach(function(key) {
+                        setError(key, {
+                            type: "manual",
+                            message: res.data[key]
+                        });
+                    });
+                    if(res.data.data == data){
+                        data.user_id = res.data.user_id;
+                        history.push("/orders",data);
+                    }
+                }).catch(error => {
+                    if (error.response) {
+                        // Request made and server responded
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                        setServerErrors({main:{message:error.response.data['error']}});
+                    } else if (error.request) {
+                        // The request was made but no response was received
+                        console.log(error.request);
+                    } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('Error', error.message);
+                    };
                 });
+             }else{
+                 
+             }
+        }else{
+            http.post('/signup',data).then(res => {
+                console.log("---------------------");
+                console.log(res.data);
+                console.log("---------------------");
+                Object.keys(res.data).forEach(function(key) {
+                    setError(key, {
+                        type: "manual",
+                        message: res.data[key]
+                    });
+                });
+                if(res.data.user_id){
+                    data.user_id = res.data.user_id;
+                    history.push("/verification",data);
+                }
+            }).catch(error => {
+                if (error.response) {
+                    // Request made and server responded
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    setServerErrors({main:{message:error.response.data['error']}});
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                };
             });
-            if(res.data.user_id){
-                data.user_id = res.data.user_id;
-                history.push("/verification",data);
-            }
-        }).catch(error => {
-            if (error.response) {
-                // Request made and server responded
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-                setServerErrors({main:{message:error.response.data['error']}});
-              } else if (error.request) {
-                // The request was made but no response was received
-                console.log(error.request);
-              } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
-              };
-        });
+        }
     }
     
 
@@ -87,10 +173,10 @@ const Registration = (props) => {
     return (
         <Grid className="testmonialArea ptb-104" style ={centerText} >
             <Grid container spacing={4} className="container" justify="center">
-                <Grid item xs={12} >
+                <Grid item xs={12} style ={props.update ? {"display":"none"}:{} }>
                     <img src={logo} alt="" />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style ={props.update ? {"display":"none"}:{} }>
                     <SectionTitle
                         title="Register Now!"
                     />
@@ -107,6 +193,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="fname"
                                         label="First Name"
+                                        value={first}
+                                        onChange={(e) => setFirst(e.target.value)}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -117,6 +205,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="lname"
                                         label="Last Name"
+                                        value={last}
+                                        onChange={(e) => setLast(e.target.value)}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -127,6 +217,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="company_name"
                                         label="Company Name"
+                                        value={company}
+                                        onChange={(e) => setCompany(e.target.value)}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -156,12 +248,15 @@ const Registration = (props) => {
                                     rules={{ required: "this is required" }}
                                     control={control}
                                     defaultValue=""
+                        
+                          
                                     />
                                     <FormHelperText>
                                     <p style={error}>{errors.country && errors.country.message}</p>
                                     </FormHelperText>
                                 </FormControl>
                                 </Grid>
+                                {props.update ? <></>:
                                 <Grid item xs={6} justify = "center" alignItems="center" item>
                                 <FormControl
                                     style={{ minWidth: 300 }}
@@ -196,18 +291,21 @@ const Registration = (props) => {
                                     name="type"
                                     rules={{ required: "this is required" }}
                                     control={control}
+                                    
                                     defaultValue=""
                                     />
                                     <FormHelperText>
                                     {errors.wordlevel && errors.wordlevel.message}
                                     </FormHelperText>
                                     </FormControl>
-                                </Grid>
+                                </Grid>}
                                 <Grid item sm={12} xs={12} alignItems="center" item>
                                 <p style={error}> {errors.phone && errors.phone.message}</p>
                                     <TextField
                                         name="phone"
                                         label="Phone Number"
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        value={phone}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -218,6 +316,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="address"
                                         label="Adrress"
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        value={address}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -228,6 +328,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="city"
                                         label="City"
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -238,6 +340,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="state"
                                         label="State"
+                                        value={state}
+                                        onChange={(e) => setState(e.target.value)}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register}
@@ -248,7 +352,9 @@ const Registration = (props) => {
                                     <TextField
                                         name="pin"
                                         label="Zip Code"
+                                        value={pin}
                                         fullWidth
+                                        onChange={(e) => setPin(e.target.value)}
                                         disabled={ props.resume }
                                         inputRef={register}
                                     />
@@ -258,6 +364,8 @@ const Registration = (props) => {
                                     <TextField
                                         name="email"
                                         label="Email"
+                                        value = {email}
+                                        inputProps={props.update ? { readOnly: true }:{}}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register({
@@ -269,7 +377,7 @@ const Registration = (props) => {
                                            })}
                                     />
                                 </Grid>
-                                <Grid item sm={12} xs={12} alignItems="center" item>
+                                {props.update ? <></>:<Grid item sm={12} xs={12} alignItems="center" item>
                                 <p style={error}>{errors.password && errors.password.message}</p>
                                     <TextField
                                         name="password"
@@ -279,8 +387,8 @@ const Registration = (props) => {
                                         disabled={ props.resume }
                                         inputRef={register}
                                     />
-                                </Grid>
-                                <Grid item sm={12} xs={12} alignItems="center" item>
+                                </Grid>}
+                                {props.update ? <></>:<Grid item sm={12} xs={12} alignItems="center" item>
                                 <p style={error}>{errors.confirm_password && errors.confirm_password.message}</p>
                                     <TextField
                                         name="confirm_password"
@@ -290,7 +398,8 @@ const Registration = (props) => {
                                         disabled={ props.resume }
                                         inputRef={register}
                                     />
-                                </Grid>
+                                </Grid>}
+                                
                                 
                             </Grid>
                             
@@ -298,9 +407,9 @@ const Registration = (props) => {
                     </Grid>
                     <Grid   md={12} xs={12}  item>
                     <p style={error}> {serverErrors.main && serverErrors.main.message}</p><br></br>
-                    <Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Resgister!</Button>
+                    {props.update ?<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Update!</Button>:<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Resgister!</Button> }
                     </Grid>
-                    <Grid   md={12} xs={12}  item>
+                    <Grid   style ={props.update ? {"display":"none"}:{} } md={12} xs={12}  item >
                     <p>By clicking Sign Up, you agree to our Terms of Service and Privacy Policy</p>
                     <p>Already have an acount?<Link to="/login" style = {textColor}> Log in</Link></p>
                     </Grid>

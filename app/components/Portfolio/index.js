@@ -28,6 +28,7 @@ class Portfolio extends Component {
                                 author={product.author}
                                 review={product.category}
                                 price={`US$ ${product.tiers[0].price}`}
+                                product={product}
                                 addProductToCartHandler={this.props.addProductToCartHandler}/>
                         </Grid>
                     ))

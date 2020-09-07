@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from 'containers/_PrivateRoute'
 import SupplierPrivateRoute from 'containers/_SupplierPrivateRoute'
 import BuyerPrivateRoute from 'containers/_BuyerPrivateRoute'
+import ShipperPrivateRoute from 'containers/_ShipperPrivateRoute'
 import PublicRoute from 'containers/_PublicRoute'
 
 
@@ -12,8 +13,7 @@ import PublicRoute from 'containers/_PublicRoute'
 
 // homes 
 import HomePage from 'containers/HomePage/Loadable'
-import HomeStyleTwo from 'containers/HomeStyleTwo'
-import HomeThreeStyle from 'containers/HomeThreeStyle/Loadable'
+
 
 import BecomeSeller from 'containers/BecomeSeller'
 import SupplierNetwork from 'containers/SupplierNetwork'
@@ -39,6 +39,7 @@ import RegistrationPage from 'containers/RegistrationPage'
 import VerificationCodePage from 'containers/VerificationCodePage'
 import Dashboard from 'containers/Dashboard'
 import SupplierDashboard from 'containers/SupplierDashboard'
+import ShipperDashboard from 'containers/ShipperDashboard'
 import Orders from 'containers/Orders'
 import RFP from 'containers/RFP'
 import Favorites from 'containers/Favorites'
@@ -68,27 +69,18 @@ const Routes = (props) => {
                 component={HomePage}
                 
             />
-           <PrivateRoute
-                exact
-                path="/home-two"
-                component={HomeStyleTwo}
-            />
-            <PrivateRoute
-                exact
-                path="/home-three"
-                component={HomeThreeStyle}
-            />
-          { <PublicRoute
+          
+           <PublicRoute
                 exact
                 path="/login"
                 component={LoginPage}
-          />}
+          />
             <BuyerPrivateRoute
                 exact
                 path="/dashboard"
                 component={Dashboard}
             />
-           <PrivateRoute
+           <SupplierPrivateRoute
                 exact
                 path="/new-product"
                 component={NewProduct}
@@ -107,6 +99,11 @@ const Routes = (props) => {
                 exact
                 path="/supplier-dashboard"
                 component={SupplierDashboard}
+            />
+            <ShipperPrivateRoute
+                exact
+                path="/shipper-dashboard"
+                component={ShipperDashboard}
             />
             <PublicRoute
                 exact

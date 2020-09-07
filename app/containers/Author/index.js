@@ -9,7 +9,7 @@ import Header from 'components/Header/Loadable'
 import AuthorInfo from 'components/AuthorInfo/Loadable'
 import Footer from 'components/Footer/Loadable'
 
-const Author = () => {
+const Author = (props) => {
     return (
         <Fragment>
             <Helmet>
@@ -19,7 +19,7 @@ const Author = () => {
                 className="headerAreaStyleTwo"
                 logo={logo}
             />
-            <AuthorInfo />
+            <AuthorInfo supplier_id = {props.location.state.supplier_id} />
             <Footer />
         </Fragment>
     );

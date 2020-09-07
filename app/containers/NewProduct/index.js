@@ -25,12 +25,9 @@ import { useForm, Controller } from "react-hook-form";
 
 import avarar1 from 'images/blogs/avatar1.png'
 import styles from "assets/css/material-dashboard-react.css";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc4NjU5NjMsIm5iZiI6MTU5Nzg2NTk2MywianRpIjoiZGU0OTJmMjctMDYzMi00YTJiLTk0ZWEtNjYyOWZjNDdmOTg0IiwiZXhwIjoxNTk3OTUyMzYzLCJpZGVudGl0eSI6IjVmMzk4ZDQzM2NjZDUyMzRhNDYzNzg1YiIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.t5KzxETRRu6q7QH9WswE9TFPdoMAVLqvQYKLfSUhkSs";
 const useStyles = makeStyles(styles);
 
-const config = {
-  headers: { Authorization: `Bearer ${token}` }
-};
+
 
 const theme= {
   root: {
@@ -91,18 +88,29 @@ export default function Language() {
 
   const onSubmit = data => {
       console.log(data);
-      http.post('/product',data, config).then(res => {
+      console.log("SUBMIT--------------------");
+      const data2 = new FormData();
+     var imagefile = document.querySelector('#file');
+     data2.append('data', JSON.stringify(data));
+     data2.append("image", imagefile.files[0]);
+     
+      var config={headers: {
+        'Content-Type': 'multipart/form-data' }
+      }
+      http.post('/product',data2, config).then(res => {
           console.log(res.data);
           console.log(JSON.stringify(res.data));
+          console.log("entreooooo--------------------");
           Object.keys(res.data).forEach(function(key) {
               setError(key, {
                   type: "manual",
                   message: res.data[key]
               });
           });
-          if(res.data.user_id){
+          
+          if(res.data.message ="Product Added Successfuly"){
               data.user_id = res.data.user_id;
-              //history.push("/verification",data);
+              history.push("/supplier-dashboard",data);
           }
       }).catch(error => {
           if (error.response) {
@@ -144,20 +152,16 @@ export default function Language() {
       </Card>
       <Card style = {theme.combo}>
         <CardBody>
-                <GridItem md = {12} >
+                <GridItem md = {7} >
                     <br></br>
                 <InputLabel id="demo-simple-select-label">Upload the Pictures of your Product</InputLabel><br>
                 </br>
-                    <GridContainer md = {12} >
-                      <GridItem md = {4} >
-                      <img src = {avarar1} style ={theme.productImg}></img>
+                    <GridContainer md = {6} >
+                      <GridItem md = {7} >
+                      {/*<img src = {avarar1} style ={theme.productImg}></img>*/}
+                      <input type="file" id="file" ></input>
                       </GridItem>
-                      <GridItem md = {4} >
-                      <img src = {avarar1} style = {theme.productImg}></img>
-                      </GridItem>
-                      <GridItem md = {4} >
-                        <img src = {avarar1} style = {theme.productImg}></img>
-                      </GridItem>
+ 
                     </GridContainer>
                 </GridItem>    
               <br></br>
@@ -253,6 +257,9 @@ export default function Language() {
                     />
                 </GridItem>    
               <br></br><br></br>
+              <FormHelperText>
+                      <p >{errors.tiers && errors.tiers.message}</p>
+              </FormHelperText>
             </CardBody>
         </Card>
         <Card style = {theme.combo}>

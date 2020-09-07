@@ -6,20 +6,20 @@ import { Link } from 'react-router-dom'
 import Rating from 'react-rating'
 import './style.scss'
 
-const SingleProduct = ({ name, badge, description, image, author, review, price, id, addProductToCartHandler }) => {
+const SingleProduct = ({ name, badge, description, image, author, review, price, id, addProductToCartHandler, product }) => {
     return (
         <Grid className="productWrap">
             <Grid className="productImg">
-                <Link to={`/product-details/${id}`}>
+                <Link  to ={{pathname:`/product-details/${id}`,state:{product:product}}}>
                     <img src={image} alt="" />
                 </Link>
 
             </Grid>
             <Grid className="productContent">
                 <h3>
-                    <Link to={`/product-details/${id}`}> {name} </Link>
+                    <Link to={{pathname:`/product-details/${id}`}}> {name.substring(0,15)}... </Link>
                 </h3>
-                <span className="author">By <Link to='/author'>{author}</Link></span>
+                <span className="author">By <Link to={{pathname:`/author`,state:{"supplier_id":product.supplier_id}}}>{product.supplier_name}</Link></span>
                 <span className="rating">
                     <Rating
                         className="ratingIcon"
@@ -28,7 +28,7 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
                         initialRating={description}
                         readonly
                     />
-                    <span className="review">{description}</span>
+                    <span className="review">{description.substring(0,15)}...</span>
                 </span>
                 <div className="productAction">
                     <h4>{price}</h4>

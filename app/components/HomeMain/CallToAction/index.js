@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Slider from "react-slick";
 import SectionTitle from 'components/SectionTitle/Loadable'
 
+import image from 'images/calltoaction.jpg'
 import iso from 'images/certified/iso.png'
 import iso2 from 'images/certified/iso2.png'
 import fda from 'images/certified/fda.png'
@@ -59,7 +60,7 @@ const NewlyAddProducts = () => {
         ]
     };
     return (
-        <Grid className="newlyAddProductsArea ptb-104">
+        <Grid className="newlyAddProductsArea ptb-104" style = {{"backgroundImage":"url(" + image + ")"} }>
             <Grid container spacing={4} className="container">
                 <Grid item xs={12}>
                 </Grid>
@@ -69,8 +70,8 @@ const NewlyAddProducts = () => {
 
                 <Grid item xs={12}>
                     <Grid className="newsleter" justify="center">
-                        <h2>Start using our marketplace!</h2>
-                            <Button class ="btn">Register now</Button>
+                        <h2 style ={{"color":"white"}}>Start using our marketplace!</h2>
+                            <Link to="/registration"><Button class ="btn">Register now</Button></Link>
                     </Grid>
                 </Grid>
                                  

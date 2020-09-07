@@ -5,8 +5,7 @@ import ModalVideo from 'react-modal-video'
 import './style.scss'
 
 // images 
-import bgImg from 'images/bg/hero.png'
-import heroImg from 'images/hero-img.png'
+import bgImg from 'images/bg/hero.jpg'
 import about from 'images/solutions/s1.png'
 
 var heros = {
@@ -16,7 +15,6 @@ var heros = {
     btn: 'Start Shopping',
     btn2: 'Start Selling',
     bg: bgImg,
-    heroImg: heroImg
 }
 
 const HeroOut = (props) => {

@@ -12,7 +12,7 @@ import image1 from 'images/blogs/img4.jpg'
 import avarar1 from 'images/blogs/avatar1.png'
 
 async function getCertifications(){
-    const response = await http.get('/category').then(data => {
+    const response = await http.get('/certifications').then(data => {
         return data;
     }).catch(error => {
         console.error(error);
@@ -74,20 +74,20 @@ export default function Fields({ control, register, defaultValues, errors }) {
         setBusy(true);
         const response = await getCertifications();
         console.log(response.data);
-        setCertifications(response.data);
+        setCertifications(response.data.certifications);
         setBusy(false) ;
     }
     certificationsCall();
   },[]);
 
-  const handleCategorieChange = (e) => {
-    setAddCertification(certifications.find(data => data._id === e.target.value))
+  const handleCertificationChange = (e) => {
+    setAddCertification({"name":e.target.value});
   }
 
   return (
     <>
       <ul>
-        {fields.map((item, index) => {
+        {fields.map((item, index) => { console.log(item);
           return (
             <li key={item.id}>
                 <Grid className=" ptb-104" style = {itemContainer}>
@@ -95,7 +95,7 @@ export default function Fields({ control, register, defaultValues, errors }) {
                         <Grid item md={12} xs={12}>
                                 <Grid className="authorBox">
                                     <Grid className="authorContent" container>
-                                        <input type = "hidden" value = {item._id} name = {`certification[${index}]`} ref={register} ></input>
+                                        <input type = "hidden" value = {item.name} name = {`certification[${index}]`} ref={register} ></input>
                                         <TextField  inputProps={{min: 0, style: { textAlign: 'center' }}} defaultValue={`${item.name}`} disabled></TextField>
                                             <button type="button" onClick={() => remove(index)}>
                                                 X
@@ -115,14 +115,14 @@ export default function Fields({ control, register, defaultValues, errors }) {
         <InputLabel id="demo-simple-select-label">Select a Certification</InputLabel>
         <Select
                 labelId="demo-simple-select-label"
-                onChange={e => handleCategorieChange(e)}
+                onChange={e => handleCertificationChange(e)}
                 defaultValue="Select a Certification"
             >
             {isBusy ? (
                 <></>
             ) : (
-                certifications.map((category) => (
-                    <MenuItem value={category._id}>{category.name}</MenuItem>
+                certifications.map((certification) => (
+                    <MenuItem value={certification}>{certification}</MenuItem>
                 ))
             )}
             </Select>

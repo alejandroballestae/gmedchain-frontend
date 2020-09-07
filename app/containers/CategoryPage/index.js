@@ -7,7 +7,6 @@ import Breadcumb from 'components/Breadcumb/Loadable'
 import Footer from 'components/Footer/Loadable'
 import Portfolio from 'components/Portfolio/Loadable'
 import CategoryList from 'components/CategoryList/Loadable'
-import RelatedCategory from 'components/RelatedCategory/Loadable'
 import http from 'http.service';
 import {  Link } from 'react-router-dom';
 import './style.scss'
@@ -32,6 +31,7 @@ async function getProducts(){
     const [searchText, setSearchText] = useState(this.props.location.state || '');
 
     const response = await http.get('/product').then(data => {
+
         return data;
     }).catch(error => {
         console.error(error);
@@ -122,7 +122,6 @@ class CategoryPage extends Component {
 
         if(this.props.location.state == undefined){
             http.get('/product').then(data => {
-                console.log(data);
                 this.setState({ products: data.data });
             }).catch(error => {
                 console.error(error);

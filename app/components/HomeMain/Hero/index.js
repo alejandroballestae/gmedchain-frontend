@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { Grid, Button } from '@material-ui/core'
-import ModalVideo from 'react-modal-video'
+
 import './style.scss'
 
 // images 
-import bgImg from 'images/bg/hero.png'
-import heroImg from 'images/hero-img.png'
+import bgImg from 'images/bg/hero2.jpg';
+
 import { Link, NavLink } from 'react-router-dom'
 const heros = {
     title: 'Instrumentation is the Foundation',
@@ -14,8 +14,7 @@ const heros = {
     text: 'Order Medical Products from Our Verified Suppliers',
     btn: 'Start Shopping',
     btn2: 'Start Selling',
-    bg: bgImg,
-    heroImg: heroImg
+    bg: bgImg
 }
 
 const Hero = (props) => {

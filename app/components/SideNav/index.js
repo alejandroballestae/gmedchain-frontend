@@ -110,7 +110,7 @@ const categories = [
 const Category = ({ icon: Icon, label, items = [], name, url, selected }) => {
   const classes = useStyles();
   const unresolved = filter(items, ['resolved', false]);
-
+  console.log(localStorage.getItem('token'));
   return (
     <ListItem className={classes.linkItem}>
       <NavLink
@@ -154,7 +154,7 @@ const SideNav = ({ selected }) => {
     <div className={classes.root}>
       <List className={classes.filterList}>
         {/*<DropDown className={classes.createNewButton} items={createForms} onChange={dropdownOnChange} value={createForm} />*/}
-        <Category icon={Inbox} label="Home"  url="/dashboard" />
+        <Category icon={Inbox} label="Home"  url={ localStorage.getItem('type') == 'Buyer' ? "/dashboard":(localStorage.getItem('type')=='Seller'?"/supplier-dashboard":"/shipper-dashboard")} />
        {/* <Category icon={Send} label="Inbox"  url="/inbox" />*/}
       </List>
 
@@ -165,6 +165,7 @@ const SideNav = ({ selected }) => {
       <List className={classes.filterList}>
         {/*<Category label="RFP or Q" url="/RFP" />*/}
         <Category label="Orders" url="/orders" />
+        {localStorage.getItem('type')=="Seller" ? <Category label="New Product" url="/new-product" />:""}
         {/*<Category  label="Invoice" url="/invoice" />
         <Category  label="Favorites" url="/Favorites" />*/}
       </List>

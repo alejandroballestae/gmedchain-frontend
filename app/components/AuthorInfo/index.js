@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Tab, Tabs, Button } from '@material-ui/core'
 import Rating from 'react-rating'
 import './style.scss'
@@ -6,18 +6,40 @@ import './style.scss'
 // components 
 import Profile from 'components/Profile/Loadable'
 import Portfolio from 'components/Portfolio/Loadable'
+import http from 'http.service';
 import Followers from 'components/Followers/Loadable'
 import Review from 'components/Review/Loadable'
 // images 
-import author from 'images/author.jpg'
+import author from 'images/cert_icon.jpg'
 
+async function getAuthorInfo(id){
+    
+    const response = await http.get('/supplier/'+id).then(data => {
+        return data;
+    }).catch(error => {
+        console.error(error);
+    })
+    return response;
+  }
 
-const AuthorInfo = () => {
+const AuthorInfo = (props) => {
     const [value, setValue] = useState(0);
-
+    const [authorData, setAuthorData] = useState([]);
+    const [isBusy, setBusy] = useState(false);
     function handleChange(event, newValue) {
         setValue(newValue);
     }
+
+    useEffect(()=>{
+        async function dataCall(){
+            setBusy(true);
+            const response = await getAuthorInfo(props.supplier_id);
+            console.log(response.data);
+            setAuthorData(response.data[0]);
+            setBusy(false) ;
+        }
+        dataCall();
+      },[]);
     return (
         <Grid className="authorInfoArea">
             <Grid
@@ -28,44 +50,28 @@ const AuthorInfo = () => {
                     <Grid className="authorImage">
                         <img src={author} alt="" />
                         <ul className="authorSocialLink">
-                            <li><a className="twitter" href="#"><i className="ti-twitter-alt"></i></a></li>
-                            <li><a className="facebook" href="#"><i className="ti-facebook"></i></a></li>
-                            <li><a className="dribbble" href="#"><i className="ti-dribbble"></i></a></li>
-                            <li><a className="linkedin" href="#"><i className="ti-linkedin"></i></a></li>
+    
                         </ul>
                     </Grid>
                 </Grid>
                 <Grid item lg={8} md={8} xs={12}>
                     <Grid className="authorInfoWrap">
                         <Grid className="authorInfo">
-                            <h3>Robert William</h3>
-                            <p>Member since June 2017</p>
-                            <ul className="flowBtn">
-                                <li><span className="flow">Follow</span></li>
-                                <li><Button component="a" href="Javascript:vodi(0)"><i className="ti-facebook"></i></Button></li>
-                                <li><Button component="a" href="Javascript:vodi(0)"><i className="ti-dribbble"></i></Button></li>
-                            </ul>
+                            <h3>{authorData.company_name}</h3>
+
                         </Grid>
 
                         <ul className="infoActionWrap">
                             <li>
-                                <h4>26</h4>
-                                <p>Total Item</p>
+                                <h4>{authorData.products?authorData.products.length:0}</h4>
+                                <p>Total Products</p>
                             </li>
                             <li>
-                                <h4>532</h4>
+                                <h4>{authorData.orders?authorData.orders.length:0}</h4>
                                 <p>Total Sale</p>
                             </li>
                             <li>
-                                <Rating
-                                    className="ratingIcon"
-                                    emptySymbol="fa fa-star-o"
-                                    fullSymbol="fa fa-star"
-                                    initialRating={4.3}
-                                    readonly
-                                />
-                                <span className="review">(08)</span>
-                                <p>Author Ratings</p>
+
                             </li>
                         </ul>
                     </Grid>
@@ -78,17 +84,13 @@ const AuthorInfo = () => {
                             indicator: 'tabIndicator'
                         }}
                     >
-                        <Tab label="Profile" />
-                        <Tab label="Portfolio" />
-                        <Tab label="Followers" />
-                        <Tab label="Following" />
-                        <Tab label="Riview" />
+                        <Tab label="Profile"  />
+                       
+
                     </Tabs>
-                    {value === 0 && <Profile />}
+                    {value === 0 && <Profile supplier ={authorData} />}
                     {value === 1 && <Portfolio />}
-                    {value === 2 && <Followers />}
-                    {value === 3 && <Followers />}
-                    {value === 4 && <Review />}
+
                 </Grid>
             </Grid>
         </Grid >

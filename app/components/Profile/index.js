@@ -5,15 +5,24 @@ import './style.scss'
 // images 
 import banner from 'images/profile.jpg'
 
-const Profile = () => {
-    return (
+const Profile = (props) => {
+
+    return (props.supplier.address?
         <Grid className="profileWrap">
 
-            <img src={banner} alt="" />
-            <h4>Hello I am Robert William</h4>
-            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, </p>
-            <p>you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
-        </Grid>
+      
+            <h4>This supplier has been validated</h4>
+            <Grid className="itemDetails" xs = {12} container>
+                <Grid xs = {4}>
+                <ul>
+                    <li>Address: {props.supplier.address.address}</li>
+                    <li>City: {props.supplier.address.city}</li>
+                    <li>State: {props.supplier.address.state}</li>
+                    <li>Country: {props.supplier.address.country}</li>
+                </ul>
+                </Grid>
+            </Grid>
+        </Grid>:<></>
     );
 }
 

@@ -4,9 +4,9 @@ import Swiper from 'react-id-swiper';
 import './style.scss'
 
 // images 
-import slider1 from 'images/slider/slider.png'
-import slider2 from 'images/slider/slider2.png'
-import slider3 from 'images/slider/slider3.png'
+import slider1 from 'images/slider/slider.jpg'
+import slider2 from 'images/slider/slider2.jpg'
+import slider3 from 'images/slider/slider3.jpg'
 
 
 const HeroSlider = () => {

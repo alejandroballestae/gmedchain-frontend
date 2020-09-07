@@ -21,7 +21,7 @@ const featureds = [
     },
     {
         title: 'Authenticity',
-        text: 'Govern sourcing decisions and trace history for every product with a digital ‘passport’ that proves authenticity and origin.',
+        text: 'Govern sourcing decisions and trace history for every product with a digital ‘passport’ that proves authenticity and origin. We connect the World.',
         color: 'linear-gradient(to bottom, #c968ff, #6168f3)',
         icon: 'flaticon-ui',
         id: 3
@@ -42,7 +42,7 @@ const featureds = [
     },
     {
         title: 'Connectivity',
-        text: 'We craft powerful templates to keep visitors engaged and maximize store sales extensively. We connect different markets around the world.',
+        text: 'We craft powerful templates to keep visitors engaged and maximize store sales extensively.',
         color: 'linear-gradient(to bottom, #ffad6f, #ff7d90)',
         icon: 'flaticon-network',
         id: 6

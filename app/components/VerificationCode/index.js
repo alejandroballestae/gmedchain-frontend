@@ -132,7 +132,7 @@ const VerificationCode = (props) => {
                         </form>
                     </Grid>
                     <Grid   md={12} xs={12}  item>
-                    <p style={error}> {serverErrors.main && serverErrors.main.message}</p><br></br>resendCode
+                    <p style={error}> {serverErrors.main && serverErrors.main.message}</p><br></br>
                     <Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Done</Button>
                     <Modal
                         aria-labelledby="transition-modal-title"

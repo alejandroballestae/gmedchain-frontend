@@ -95,7 +95,7 @@ export default function Fields({ control, register, defaultValues, errors }) {
                         <Grid item md={12} xs={12}>
                                 <Grid className="authorBox">
                                     <Grid className="authorContent" container>
-                                        <input type = "hidden" value = {item._id} name = {`category[${index}]`} ref={register} ></input>
+                                        <input type = "hidden" value = {item._id} name = {`category_id[${index}]`} ref={register} ></input>
                                         <TextField  inputProps={{min: 0, style: { textAlign: 'center' }}} defaultValue={`${item.name}`} disabled></TextField>
                                             <button type="button" onClick={() => remove(index)}>
                                                 X

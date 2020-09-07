@@ -35,10 +35,15 @@ const Login = (props) => {
             console.log(localStorage.getItem('token'));
             console.log(localStorage.getItem('type'));
             console.log(localStorage.getItem('type') == 'Buyer');
+            
             if(localStorage.getItem('type') == 'Buyer'){
                 history.push("/dashboard");
             }else{
-                history.push("/supplier-dashboard");
+                if(localStorage.getItem('type') == 'Seller'){
+                    history.push("/supplier-dashboard");
+                }else{
+                    history.push("/shipper-dashboard");
+                }
             }
             
         }).catch(error => {

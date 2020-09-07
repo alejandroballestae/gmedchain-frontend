@@ -5,17 +5,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
 import NoticeLayout from "components/NoticeLayout";
-import avatar from "assets/img/faces/marc.jpg";
-import ProgressBar from "components/ProgressBar"
-import { Grid } from '@material-ui/core'
+import Registration from 'components/Registration/Loadable'
 
 const styles = {
   cardCategoryWhite: {
@@ -91,7 +82,8 @@ export default function Orders() {
         <br></br>
         <h3>Profile</h3>
         </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
+        <Registration update ={true}></Registration>
+      {/*<GridItem xs={12} sm={12} md={12}>
           <br></br>
           <GridContainer>
                 <GridItem md = {5}>
@@ -243,8 +235,8 @@ export default function Orders() {
               </Button>
             </CardBody>
           </Card>
-        </GridItem>
-      </GridContainer >
+        </GridItem>*/}
+                  </GridContainer >
     </NoticeLayout>
   );
 }
