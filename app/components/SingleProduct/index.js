@@ -8,7 +8,7 @@ import './style.scss'
 
 const SingleProduct = ({ name, badge, description, image, author, review, price, id, addProductToCartHandler, product }) => {
     
-    var img = (product.img_names?product.img_names[0]+".jpg":"img1");
+    var img = (product.img_names?product.img_names[0]:"img1");
     let img_src = "";
     try{
         img_src = require(`../../images/products/${img}.jpg`);

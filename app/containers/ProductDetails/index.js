@@ -27,8 +27,10 @@ import image1 from 'images/products/img1.jpg'
 class ProductDetails extends Component {
     state = {
         product: [],
+        img:"",
         value: 0
     }
+    
     constructor(props) {
         super(props);
     }
@@ -38,8 +40,17 @@ class ProductDetails extends Component {
         })
     }
     componentDidMount() {
+        var img = (this.props.location.state.product.img_names?this.props.location.state.product.img_names[0]:"img1");
+        let img_src = "";
+        try{
+            img_src = require(`../../images/products/${img}.jpg`);
+        }catch(e){
+            img_src = require(`../../images/products/img2.jpg`);
+        }
+    
         this.setState({
-            product: this.props.location.state.product
+            product: this.props.location.state.product,
+            img:img_src
         })
     }
     render() {
@@ -71,7 +82,7 @@ class ProductDetails extends Component {
                         <Grid item md={8} xs={12}>
                             <Grid className="productDetailsWrap">
                                 <Grid className="productDetailsImg">
-                                    <img src={image1} alt="" />
+                                    <img src={this.state.img} alt="" />
                                 </Grid>
                                 <Tabs
                                     value={this.state.value}
