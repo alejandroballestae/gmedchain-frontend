@@ -47,7 +47,7 @@ class ProductDetails extends Component {
         }catch(e){
             img_src = require(`../../images/products/img2.jpg`);
         }
-    
+
         this.setState({
             product: this.props.location.state.product,
             img:img_src
