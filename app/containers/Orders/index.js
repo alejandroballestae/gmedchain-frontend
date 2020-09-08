@@ -53,7 +53,7 @@ const orderStatus = {
   "Ordered": 0,
   "Confirmed": 1,
   "ReadyForPickup": 2,
-  "Shipped": 3,
+  "onShipping": 3,
   "Delivered": 4,
   "ConfirmDelivery": 5
 }
@@ -61,7 +61,7 @@ const orderDisplay = {
 "Ordered": "Ordered",
 "Confirmed": "Confirmed",
 "ReadyForPickup": "Ready for Pickup",
-"Shipped": "Shipped",
+"onShipping": "On Shipping",
 "Delivered": "Delivered",
 "ConfirmDelivery": "Confirmed Delivery"
 }
@@ -110,7 +110,11 @@ export default function Orders() {
         var total = OrdersAux.length;
         var orderded = (OrdersAux.filter((order)=>orderStatus[order.order_status]==0).length/total)*100;
         var confirmed = (OrdersAux.filter((order)=>orderStatus[order.order_status]==1).length/total)*100;
+        var readyToPick = (OrdersAux.filter((order)=>orderStatus[order.order_status]==2).length/total)*100;
         var onShipping = (OrdersAux.filter((order)=>orderStatus[order.order_status]==3).length/total)*100;
+        var delivered = (OrdersAux.filter((order)=>orderStatus[order.order_status]==4).length/total)*100;
+        var arrived = (OrdersAux.filter((order)=>orderStatus[order.order_status]==5).length/total)*100;
+
         var payed = (OrdersAux.filter((order)=>order.payment_status=='Complete').length/total)*100;
         var unpayed = (OrdersAux.filter((order)=>order.payment_status=='Incomplete').length/total)*100;
                
@@ -119,7 +123,10 @@ export default function Orders() {
             series: [
               { meta: "A value is:", value: orderded },
               { meta: "B value is:", value: confirmed },
-              { meta: "C value is:", value: onShipping }
+              { meta: "C value is:", value: readyToPick },
+              { meta: "B value is:", value: onShipping },
+              { meta: "C value is:", value: delivered },
+              { meta: "C value is:", value: arrived }
             ]}
         )
         setPaymentData(  {
@@ -150,7 +157,7 @@ export default function Orders() {
               />
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>Orders Payment</h4>
+              <h4 className={classes.cardTitle}>Orders Status</h4>
             </CardBody>
             <CardFooter chart>
 
@@ -168,7 +175,7 @@ export default function Orders() {
               />
             </CardHeader>
             <CardBody>
-              <h4 className={classes.cardTitle}>Order Status</h4>
+              <h4 className={classes.cardTitle}>Orders Payment</h4>
             </CardBody>
             <CardFooter chart>
 
@@ -236,9 +243,9 @@ export default function Orders() {
             >
                 <Tab label="All" />
                 <Tab label="Ordered" />
-                <Tab label="Accpeted" />
-                <Tab label="To be Shipped" />
-                <Tab label="On Shipping" />
+                <Tab label="Accepted" />
+                <Tab label="Ready to Pickup" />
+                <Tab label="Delivered" />
             </Tabs>
           <Card>
           <CardBody>

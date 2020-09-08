@@ -50,7 +50,7 @@ const orderStatus = {
   "Ordered": 0,
   "Confirmed": 1,
   "ReadyForPickup": 2,
-  "Shipped": 3,
+  "onShipping": 3,
   "Delivered": 4,
   "ConfirmDelivery": 5
 }
@@ -58,7 +58,7 @@ const orderDisplay = {
   "Ordered": "Ordered",
   "Confirmed": "Confirmed",
   "ReadyForPickup": "Ready for Pickup",
-  "Shipped": "Shipped",
+  "onShipping": "On Shipping",
   "Delivered": "Delivered",
   "ConfirmDelivery": "Confirmed Delivery"
 }
@@ -79,7 +79,7 @@ async function acceptOrder(id, history){
   console.log(payload);
   const response = await http.put('/supplier/order',payload).then(data => {
       console.log(data);
-      history.push("/dashboard-supplier");
+      history.push("/supplier-dashboard");
       return data;
   }).catch(error => {
       console.error(error);
@@ -94,7 +94,7 @@ async function pickOrder(id, history){
   console.log(payload);
   const response = await http.put('/supplier/order',payload).then(data => {
       console.log(data);
-      history.push("/dashboard-supplier");
+      history.push("/supplier-dashboard");
       return data;
   }).catch(error => {
       console.error(error);

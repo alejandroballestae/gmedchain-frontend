@@ -23,7 +23,7 @@ const orderStatus = {
   "Ordered": 0,
   "Confirmed": 1,
   "ReadyForPickup": 2,
-  "Shipped": 3,
+  "onShipping": 3,
   "Delivered": 4,
   "ConfirmDelivery": 5
 }
@@ -31,7 +31,7 @@ const orderDisplay = {
   "Ordered": "Ordered",
   "Confirmed": "Confirmed",
   "ReadyForPickup": "Ready for Pickup",
-  "Shipped": "Shipped",
+  "onShipping": "On Shipping",
   "Delivered": "Delivered",
   "ConfirmDelivery": "Confirmed Delivery"
 }
@@ -63,7 +63,7 @@ async function getOrders(){
 async function notifyShipping(id, history){
   var payload = {
     "order_id": id,
-    "order_stats": "Shipped"
+    "order_stats": "onShipping"
     };
   console.log(payload);
   const response = await http.put('/shipper/order',payload).then(data => {

@@ -7,11 +7,20 @@ import Rating from 'react-rating'
 import './style.scss'
 
 const SingleProduct = ({ name, badge, description, image, author, review, price, id, addProductToCartHandler, product }) => {
+    
+    var img = (product.img_names?product.img_names[0]+".jpg":"img1");
+    let img_src = "";
+    try{
+        img_src = require(`../../images/products/${img}.jpg`);
+    }catch(e){
+        img_src = require(`../../images/products/img2.jpg`);
+    }
+
     return (
         <Grid className="productWrap">
             <Grid className="productImg">
                 <Link  to ={{pathname:`/product-details/${id}`,state:{product:product}}}>
-                    <img src={image} alt="" />
+                    <img src={img_src} alt="" />
                 </Link>
 
             </Grid>
