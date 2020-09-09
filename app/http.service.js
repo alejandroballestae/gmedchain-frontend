@@ -7,7 +7,7 @@ const config = {
 axios.defaults.headers = config.headers;
 */
 const instance =  axios.create({
-  baseURL: "http://baseline.southcentralus.cloudapp.azure.com:5000",
+  baseURL: "http://localhost:5000",
   responseType: "json"
 });
 
