@@ -11,7 +11,7 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
     var img = (product.img_names?product.img_names[0]:"img1");
     let img_src = "";
     try{
-        img_src = require(`../../images/products/${img}.jpg`);
+        img_src = require(`../../images/products/${img}`);
     }catch(e){
         alert(e);
         img_src = require(`../../images/products/img2.jpg`);
