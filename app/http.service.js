@@ -7,7 +7,7 @@ const config = {
 axios.defaults.headers = config.headers;
 */
 const instance =  axios.create({
-  baseURL: "http://172.31.22.45:5000",
+  baseURL: "http://18.223.225.102:5000",
   responseType: "json"
 });
 
