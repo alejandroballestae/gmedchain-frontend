@@ -13,7 +13,6 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
     try{
         img_src = require(`../../images/products/${img}`);
     }catch(e){
-        alert(e);
         img_src = require(`../../images/products/img2.jpg`);
     }
     console.log("--------------------------------------xxxxx");
