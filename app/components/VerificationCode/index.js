@@ -116,7 +116,6 @@ const VerificationCode = (props) => {
                     <Grid   md={6} xs={12}  item justify = "center" alignItems="center" >
                         <form className="contactForm"  onSubmit={handleSubmit(onSubmit)}>
                             <input type ="hidden" name="user_id" ref = {register} value = {user_id} ></input>
-                            <input type ="hidden" name="type" ref = {register} value = "Seller" ></input>
 
                             <Grid container spacing={4} alignItems="center" item>
                                 <Grid item sm={12} xs={12} alignItems="center" item>
