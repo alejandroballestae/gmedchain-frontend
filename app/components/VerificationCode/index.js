@@ -50,7 +50,7 @@ const VerificationCode = (props) => {
     const history = useHistory();
     const location = useLocation();
     //const [user_id, setUserId] = useState(location.state.user_id);
-    const [user_id, setUserId] = useState('5f497b4ddcba5af0a3795302');
+    const [user_id, setUserId] = useState(location.state.user_id);
     const classes = useStyles();
     const [serverErrors, setServerErrors] = useState([]);
 
