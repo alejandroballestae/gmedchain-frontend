@@ -365,7 +365,7 @@ const Registration = (props) => {
                                         name="email"
                                         label="Email"
                                         value = {email}
-                                        onChange={(e) => setState(e.target.value)}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         fullWidth
                                         inputRef={register({
                                             required: "Enter your e-mail",
