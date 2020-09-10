@@ -365,6 +365,7 @@ const Registration = (props) => {
                                         name="email"
                                         label="Email"
                                         value = {email}
+                                        inputProps={props.update ? { readOnly: true }:{}}
                                         fullWidth
                                         disabled={ props.resume }
                                         inputRef={register({
