@@ -16,7 +16,7 @@ const testmonials = [
         image: test1,
         name: 'Henry Jimac',
         desig: 'Head of  Mahrs',
-        text: 'Edefy template dolor sit amet, consectetur adipiscing elit, beautiful sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+        text: 'GMedChain simply delivers the purest healthcare audience on the internet, and being there has helped us connect with new customers in new markets. Our program absolutely pays for itself and more.',
         id: 1
     },
     {
