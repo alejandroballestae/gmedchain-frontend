@@ -12,6 +12,8 @@ import logo from 'images/logo.png'
 
 async function getCountries(){
     const response = await http.get('/countries').then(data => {
+        console.log(data)
+        console.log("-------------Countries");
         return data;
     }).catch(error => {
         console.error(error);
@@ -70,7 +72,8 @@ const Registration = (props) => {
             setBusy(true);
             const response = await getCountries();
             setCountries(response.data.country_names);
-           
+            console.log(response.data.country_names);
+            console.log("-------------Countries");
             if(props.update){
     
                 const response2 =  await getUser();
@@ -92,7 +95,7 @@ const Registration = (props) => {
                 setEmail(formData.email);
              
             }
-            
+            setBusy(false);
         }
  
         dataCall();
@@ -247,7 +250,7 @@ const Registration = (props) => {
                                     name="country"
                                     rules={{ required: "this is required" }}
                                     control={control}
-                                    defaultValue=""
+       
                         
                           
                                     />
