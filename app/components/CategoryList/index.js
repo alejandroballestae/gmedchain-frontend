@@ -11,6 +11,15 @@ const CategoryList = ({ className, categories }) => {
         <Grid className={className ? `${className} cetagoryWrap` : 'cetagoryWrap'}>
             <h3 className="cetagoryTitle">Categories</h3>
             <ul className="cetagoryList">
+                <li key={i}>
+                <Link to={ {    
+                                pathname: '/products',
+                            }}
+                        >
+                    All
+                    <span>All</span>
+                </Link>
+                </li>
                 {categories.map((item, i) => (
                     <li key={i}>
                         <Link to={ {    
