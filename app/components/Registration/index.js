@@ -365,9 +365,8 @@ const Registration = (props) => {
                                         name="email"
                                         label="Email"
                                         value = {email}
-                                        inputProps={props.update ? { readOnly: true }:{}}
+                                        onChange={(e) => setState(e.target.value)}
                                         fullWidth
-                                        disabled={ props.resume }
                                         inputRef={register({
                                             required: "Enter your e-mail",
                                             pattern: {
