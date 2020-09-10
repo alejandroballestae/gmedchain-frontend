@@ -27,7 +27,7 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
             </Grid>
             <Grid className="productContent">
                 <h3>
-                    <Link to={{pathname:`/product-details/${id}`}}> {name.substring(0,15)}... </Link>
+                    <Link to={{pathname:`/product-details/${id}`}}> {name.substring(0,20)} </Link>
                 </h3>
                 <span className="author">By <Link to={{pathname:`/author`,state:{"supplier_id":product.supplier_id}}}>{product.supplier_name}</Link></span>
                 <span className="rating">
@@ -38,7 +38,7 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
                         initialRating={description}
                         readonly
                     />
-                    <span className="review">{description.substring(0,15)}...</span>
+                    <span className="review">{description.substring(0,20)}</span>
                 </span>
                 <div className="productAction">
                     <h4>{price}</h4>

@@ -40,7 +40,8 @@ class ProductDetails extends Component {
         })
     }
     componentDidMount() {
-        var img = (this.props.location.state.product.img_names?this.props.location.state.product.img_names[0]:"img1");
+        
+        var img = (this.props.location.state.product && this.props.location.state.product.img_names?this.props.location.state.product.img_names[0]:"img1");
         let img_src = "";
         try{
             img_src = require(`../../images/products/${img}.jpg`);
