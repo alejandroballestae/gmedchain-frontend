@@ -9,9 +9,9 @@ import bgImg from 'images/bg/hero.jpg'
 import about from 'images/solutions/s1.png'
 
 var heros = {
-    title: 'Instrumentation is the Foundation',
+    title: 'REIMAGINING HEALTHCARE',
     titleColor: 'Digital Marketplace',
-    text: 'Order Medical Products from Our Verified Suppliers',
+    text: 'Paving The Way For Innovation In Healthcare',
     btn: 'Start Shopping',
     btn2: 'Start Selling',
     bg: bgImg,
