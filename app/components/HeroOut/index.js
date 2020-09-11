@@ -10,7 +10,7 @@ import about from 'images/solutions/s1.png'
 
 var heros = {
     title: 'REIMAGINING HEALTHCARE',
-    titleColor: 'Digital Marketplace',
+    titleColor: '',
     text: 'Paving The Way For Innovation In Healthcare',
     btn: 'Start Shopping',
     btn2: 'Start Selling',
