@@ -30,7 +30,7 @@ const BecomeSeller = () => {
             <HeroSlider />
             <Activity />
             <Testmonial/>
-            <Pricing/>
+           {/* <Pricing/>*/}
             <Partners />
             <CallToAction />
             <Footer />

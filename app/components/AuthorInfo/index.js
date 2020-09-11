@@ -2,19 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Tab, Tabs, Button } from '@material-ui/core'
 import Rating from 'react-rating'
 import './style.scss'
-
+import Pdf from '../../utils/pdf/certifications.pdf';
+import Pdf2 from '../../utils/pdf/portfolio.pdf';
 // components 
 import Profile from 'components/Profile/Loadable'
 import Portfolio from 'components/Portfolio/Loadable'
 import http from 'http.service';
 import Followers from 'components/Followers/Loadable'
 import Review from 'components/Review/Loadable'
+
 // images 
 import author from 'images/cert_icon.jpg'
 
 async function getAuthorInfo(id){
     
     const response = await http.get('/supplier/'+id).then(data => {
+        console.log("FDDFDFDFFDFDFDFDFDFFFFDFF");
+        console.log(data);
+
         return data;
     }).catch(error => {
         console.error(error);
@@ -71,7 +76,13 @@ const AuthorInfo = (props) => {
                                 <p>Total Sale</p>
                             </li>
                             <li>
-
+                            <Rating
+                                
+                                    emptySymbol="fa fa-star-o"
+                                    fullSymbol="fa fa-star"
+                                    initialRating={4.3}
+                                    readonly
+                                />
                             </li>
                         </ul>
                     </Grid>
@@ -85,11 +96,25 @@ const AuthorInfo = (props) => {
                         }}
                     >
                         <Tab label="Profile"  />
-                       
-
+                        <Tab label="Portfolio"  />
+                        <Tab label="Certifications"  />
+                        <Tab label="Review"  />
+     
                     </Tabs>
                     {value === 0 && <Profile supplier ={authorData} />}
-                    {value === 1 && <Portfolio />}
+                    {value === 1 && authorData.reviews && 
+                        <Grid>
+                            Click <a href = {Pdf2} target = "_blank" style ={{"color":"blue"}}>here</a> to download the Portfolio
+
+                        </Grid>
+                    }
+                    {value === 2 && authorData.reviews && 
+                        <Grid>
+                            Click <a href = {Pdf} style ={{"color":"blue"}} target = "_blank">here</a> to download the Certifications
+
+                        </Grid>
+                    }
+                    {value === 3 && <Review reviews={authorData.reviews}/>}
 
                 </Grid>
             </Grid>

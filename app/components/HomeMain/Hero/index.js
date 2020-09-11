@@ -10,7 +10,7 @@ import bgImg from 'images/bg/hero2.jpg';
 import { Link, NavLink } from 'react-router-dom'
 const heros = {
     title: 'REIMAGINING HEALTHCARE',
-    titleColor: 'Digital Marketplace',
+    titleColor: '       Digital Marketplace',
     text: 'Paving The Way For Innovation In Healthcare',
     btn: 'Start Shopping',
     btn2: 'Start Selling',

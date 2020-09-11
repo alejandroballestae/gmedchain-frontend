@@ -37,8 +37,8 @@ const HeroSlider = () => {
             <Grid className="heroContentTwo">
                 <Grid container className="container" spacing={4}>
                     <Grid item xs={12} style ={{'textAlign':'center'}} >
-                        <h2>Start Your <span>Digital Marketplace</span> Today!</h2>
-                        <p>The Biggest Marketplace for Digital Product & the powerful</p>
+                        <h2>Start Selling in Our Marketplace!</h2>
+                        <p>The Biggest Marketplace on healthcare</p>
                         <form className="heroForm">
                             <TextField
                                 select

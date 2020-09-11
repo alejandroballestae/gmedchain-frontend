@@ -14,30 +14,30 @@ import test3 from 'images/test/img3.jpg'
 const testmonials = [
     {
         image: test1,
-        name: 'Henry Jimac',
-        desig: 'Head of  Mahrs',
+        name: 'Pete Elzer - Owner / Apex Plastic Finishing',
+        desig: '',
         text: 'GMedChain simply delivers the purest healthcare audience on the internet, and being there has helped us connect with new customers in new markets. Our program absolutely pays for itself and more.',
         id: 1
     },
     {
         image: test2,
-        name: 'Jenefer Marvel',
-        desig: 'CEO of Barbarah',
-        text: 'Edefy template dolor sit amet, consectetur adipiscing elit, beautiful sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+        name: 'Tracy Tenpenny - Partner / Tailored Label Products',
+        desig: '',
+        text: 'I couldn’t ask for a better ‘salesperson’ than GMedChain.com. For every ten dollars I’m spending there, I’m getting forty dollars in new business.',
         id: 2
     },
     {
         image: test3,
-        name: 'Robert Blank',
-        desig: 'Head of  Mahrs',
-        text: 'Edefy template dolor sit amet, consectetur adipiscing elit, beautiful sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+        name: 'Karen Norheim, EVP / American Crane & Equipment Corporation',
+        desig: '',
+        text: 'Our business expanded to three new markets in just 4 months, and GMedChain.com was an integral part of making that happen. We’re creating this whole other avenue of a sales pipeline that we didn’t have before, and we’re reaching people that we wouldn’t have reached before.',
         id: 3
     },
     {
         image: test1,
-        name: 'Henry Jimac',
-        desig: 'Head of  Mahrs',
-        text: 'Edefy template dolor sit amet, consectetur adipiscing elit, beautiful sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+        name: 'Tracy Tenpenny - Partner / Tailored Label Products',
+        desig: '',
+        text: 'I couldn’t ask for a better ‘salesperson’ than GMedChain.com. For every ten dollars I’m spending there, I’m getting forty dollars in new business.',
         id: 4
     },
 ]

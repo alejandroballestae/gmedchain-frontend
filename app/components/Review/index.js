@@ -7,364 +7,10 @@ import './style.scss'
 
 // images 
 import image1 from 'images/review/img1.png'
-import image2 from 'images/review/img2.png'
-import image3 from 'images/review/img3.png'
-import image4 from 'images/review/img4.png'
+
 
 
 const reviews = [
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemePro',
-        time: '11 Hours Ago',
-        image: image1,
-        rating: 5,
-        rating_type: 'For Design Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'DigiTheme',
-        time: '12 Hours Ago',
-        image: image2,
-        rating: 3.5,
-        rating_type: 'For Code Qualities',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ThemeSidex',
-        time: '1 Days Ago',
-        image: image3,
-        rating: 4.5,
-        rating_type: 'For Customer Support',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
-    {
-        name: 'ProFinder',
-        time: '2 Days Ago',
-        image: image4,
-        rating: 4,
-        rating_type: 'For Others',
-        details: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    },
     {
         name: 'ThemePro',
         time: '11 Hours Ago',
@@ -378,8 +24,18 @@ const reviews = [
 class Review extends Component {
     state = {
         pageOfItems: [],
+        reviews:[]
     }
-
+    constructor(props) {
+        super(props);
+        console.log(props);
+        console.log("--------TTTTTTTTTTTTTTTTTTTTt----------------------");
+        this.state = { pager: {} };
+        this.state = { reviews: props.reviews };
+        console.log("--------RRRRRR----------------------");
+        console.log(this.state.reviews);
+        
+    }
     onChangePage = (pageOfItems) => {
         this.setState({ pageOfItems: pageOfItems });
     }
@@ -387,11 +43,8 @@ class Review extends Component {
         return (
             <Fragment>
                 <ul className="reviewItems">
-                    {this.state.pageOfItems.map((item, i) => (
+                    {this.props.reviews.map((item, i) => (
                         <li key={i} className="reviewItem">
-                            <Grid className="reviewImg">
-                                <img src={item.image} alt="" />
-                            </Grid>
                             <Grid className="reviewContent">
                                 <Grid className="reviewContentTop">
                                     <Grid className="ContentLeft">
@@ -406,10 +59,10 @@ class Review extends Component {
                                             initialRating={item.rating}
                                             readonly
                                         />
-                                        <span className="review">({item.rating_type})</span>
+                                        <span className="review">{item.rating_type}</span>
                                     </Grid>
                                 </Grid>
-                                <p>{item.details}</p>
+                                <p>{item.review}</p>
                             </Grid>
                         </li>
                     ))}
@@ -417,7 +70,7 @@ class Review extends Component {
                 </ul>
                 <Pagination
                     rowShow={10}
-                    items={reviews}
+                    items={this.props.reviews}
                     onChangePage={this.onChangePage}
                 />
             </Fragment>
