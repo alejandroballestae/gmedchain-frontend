@@ -40,11 +40,12 @@ class ProductDetails extends Component {
         })
     }
     componentDidMount() {
-        
-        var img = (this.props.location.state.product && this.props.location.state.product.img_names?this.props.location.state.product.img_names[0]:"img1");
+        console.log(this.props);
+        console.log("----SSSSDDDDD_---");
+        var img = (this.props.location.state.product && this.props.location.state.product.img_names?this.props.location.state.product.img_names[0]:"img1.jpg");
         let img_src = "";
         try{
-            img_src = require(`../../images/products/${img}.jpg`);
+            img_src = require(`../../images/products/${img}`);
         }catch(e){
             img_src = require(`../../images/products/img2.jpg`);
         }
