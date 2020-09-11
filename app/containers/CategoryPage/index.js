@@ -153,7 +153,7 @@ class CategoryPage extends Component {
         }
     }
 
-        http.get('/category').then(data => {
+        http.get('/supplier-category').then(data => {
             console.log(data);
             this.setState({ categories: data.data });
         }).catch(error => {

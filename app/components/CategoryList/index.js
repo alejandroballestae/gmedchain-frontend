@@ -34,7 +34,13 @@ const CategoryList = ({ className, categories }) => {
                             }}>{item.name}</Link>
                 </Card.Header>
                 <Accordion.Collapse eventKey={index+1}>
-                  <Card.Body>{item.name}</Card.Body>
+                <Card.Body>{item.suppliers.map((supplier) =>(
+                        <Link to={ {    
+                            pathname: '/author',
+                            state:{supplier_id:supplier.supplier_id}
+                        }}>{supplier.supplier_name}</Link>
+                    ))
+                }</Card.Body>
                 </Accordion.Collapse>
               </Card>
             </Accordion>
