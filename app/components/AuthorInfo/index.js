@@ -12,7 +12,7 @@ import Followers from 'components/Followers/Loadable'
 import Review from 'components/Review/Loadable'
 
 // images 
-import author from 'images/cert_icon.jpg'
+import author from 'images/cert_icon.png'
 
 async function getAuthorInfo(id){
     
@@ -102,19 +102,19 @@ const AuthorInfo = (props) => {
      
                     </Tabs>
                     {value === 0 && <Profile supplier ={authorData} />}
-                    {value === 1 && authorData.reviews && 
+                    {value === 1 &&  
                         <Grid>
                             Click <a href = {Pdf2} target = "_blank" style ={{"color":"blue"}}>here</a> to download the Portfolio
 
                         </Grid>
                     }
-                    {value === 2 && authorData.reviews && 
+                    {value === 2 &&  
                         <Grid>
                             Click <a href = {Pdf} style ={{"color":"blue"}} target = "_blank">here</a> to download the Certifications
 
                         </Grid>
                     }
-                    {value === 3 && <Review reviews={authorData.reviews}/>}
+                    {value === 3 && authorData.reviews && <Review reviews={authorData.reviews}/>}
 
                 </Grid>
             </Grid>

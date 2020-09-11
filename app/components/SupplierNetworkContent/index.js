@@ -25,8 +25,8 @@ const SupplierNetworkContent = () => {
                     </Grid>
                 </Grid>
                 <Grid item lg={6} md={6} xs={12}>
-                    <Grid style={{ background: `url(${supplierNetwork1}) no-repeat center center / cover` }} className="aboutImg">
-                    </Grid>
+                    <img src = {supplierNetwork1}></img>
+
                 </Grid>
             </Grid>
             <ModalVideo
@@ -46,8 +46,7 @@ const SupplierNetworkContent = () => {
                     </Grid>
                 </Grid>
                 <Grid item lg={6} md={6} xs={12}>
-                    <Grid style={{ background: `url(${supplierNetwork2}) no-repeat center center / cover` }} className="aboutImg">
-                    </Grid>
+                <img src = {supplierNetwork2}></img>
                 </Grid>
             </Grid>
             <ModalVideo
@@ -66,8 +65,7 @@ const SupplierNetworkContent = () => {
                     </Grid>
                 </Grid>
                 <Grid item lg={6} md={6} xs={12}>
-                    <Grid style={{ background: `url(${supplierNetwork3}) no-repeat center center / cover` }} className="aboutImg">
-                    </Grid>
+                <img src = {supplierNetwork3}></img>
                 </Grid>
             </Grid>
             <ModalVideo
