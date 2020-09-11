@@ -38,7 +38,7 @@ const CategoryList = ({ className, categories }) => {
                         <Link to={ {    
                             pathname: '/author',
                             state:{supplier_id:supplier.supplier_id}
-                        }}>{supplier.supplier_name}</Link>
+                        }}>{supplier.supplier_name}<br></br></Link>
                     ))
                 }</Card.Body>
                 </Accordion.Collapse>
