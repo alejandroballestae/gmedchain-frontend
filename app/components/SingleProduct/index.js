@@ -29,7 +29,7 @@ const SingleProduct = ({ name, badge, description, image, author, review, price,
                 <h3>
                     <Link to={{pathname:`/product-details/${id}`}}> {name.substring(0,20)} </Link>
                 </h3>
-                <span className="author">By <Link to={{pathname:`/author`,state:{"supplier_id":product.supplier_id}}}>{product.supplier_name}</Link></span>
+                <span className="author">By <Link to={{pathname:`/author`,state:{"supplier_id":product.supplier_id}}}>{product.supplier_name.substring(0,20)}</Link></span>
                 <span className="rating">
                     <Rating
                         className="ratingIcon"
