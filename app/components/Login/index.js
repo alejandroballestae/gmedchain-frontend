@@ -109,7 +109,7 @@ const Login = (props) => {
                     <Button className="btn " onClick={handleSubmit((d) => onSubmit(d))} >Login</Button>
                     </Grid>
                     <Grid   md={12} xs={12}  item>
-                    <p>Dont have an account, <Link to="/registration" style = {textColor}>Sing up!</Link></p>
+                    <p>Dont have an account, <Link to="/registration" style = {textColor}>sign up!</Link></p>
                     </Grid>
                 </Grid>
             </Grid>

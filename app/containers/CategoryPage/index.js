@@ -31,7 +31,6 @@ async function getProducts(){
     const [searchText, setSearchText] = useState(this.props.location.state || '');
 
     const response = await http.get('/product').then(data => {
-
         return data;
     }).catch(error => {
         console.error(error);
@@ -93,7 +92,7 @@ class CategoryPage extends Component {
         });
         
         console.log(id);
-        addProduct({product:id, quantity:2},this.props.history);
+        addProduct({product:id, quantity:1},this.props.history);
         this.setState({cartLineState:[...this.state.cartLineState, null]});
     
       }
@@ -129,9 +128,8 @@ class CategoryPage extends Component {
  
             }else{
                 if(this.props.location.state.searchText){
-                    let url = "/product"
-                    let searchData = {"product":this.props.location.state.searchText};
-                    http.get(url,searchData).then(data => {
+                    let url = "/search-product/"+searchText
+                    http.get(url).then(data => {
                         console.log("---------------------DATAaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                         console.log(data);
                         this.setState({ products: data.data });

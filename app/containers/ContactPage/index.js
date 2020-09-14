@@ -31,7 +31,7 @@ const contact_info = [
         label: 'Office Address'
     },
     {
-        name: 'info@edefytheme.com',
+        name: 'info@GMedchaintheme.com',
         icon: 'fi flaticon-mail',
         color: 'linear-gradient(to bottom, #ffad6f, #ff7d90)',
         label: 'Office Mail'

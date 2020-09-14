@@ -409,7 +409,7 @@ const Registration = (props) => {
                     </Grid>
                     <Grid   md={12} xs={12}  item>
                     <p style={error}> {serverErrors.main && serverErrors.main.message}</p><br></br>
-                    {props.update ?<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Update!</Button>:<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Resgister!</Button> }
+                    {props.update ?<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Update!</Button>:<Button className="btn " name = "main"  onClick={handleSubmit((d) => onSubmit(d))} >Register!</Button> }
                     </Grid>
                     <Grid   style ={props.update ? {"display":"none"}:{} } md={12} xs={12}  item >
                     <p>By clicking Sign Up, you agree to our Terms of Service and Privacy Policy</p>

@@ -50,7 +50,7 @@ const Pricing = () => {
                 <Grid item xs={12}>
                     <SectionTitle
                         title="Our Pricing Plan"
-                        subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with Edefy!"
+                        subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with GMedchain!"
                     />
                 </Grid>
                 {pricings.map((item, i) => (

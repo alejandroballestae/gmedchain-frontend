@@ -22,7 +22,7 @@ const Footer = (props) => {
             <Grid className="container" container spacing={4}>
                 <Grid item xs={12}>
                     <Grid className="newsleter">
-                        <h2>Follow us For ferther information</h2>
+                        <h2>Follow us For further information</h2>
                         <form>
                             <input placeholder="Enter Your Email" type="text" />
                             <Button>Subscribe</Button>
@@ -62,22 +62,20 @@ const Footer = (props) => {
                 <Grid item lg={3} md={4} xs={12}>
                     <div className="footerEarningWrap">
                         <h3 className="footertitle">Market Earning</h3>
-                        <p>online store with lots of cool and exclusive features Edefy</p>
+                        <p>online store with lots of cool and exclusive features GMedchain</p>
                         <ul>
                             <li>
-                                <span>Item Sold</span>
-                                <h4>32567</h4>
+
                             </li>
                             <li>
-                                <span>Total Earning</span>
-                                <h4>603598</h4>
+
                             </li>
                         </ul>
                     </div>
 
                 </Grid>
                 <Grid item xs={12} >
-                    <p className="copyright">© 2019 Edefy. All rights reserved</p>
+                    <p className="copyright">© 2019 GMedchain. All rights reserved</p>
                 </Grid>
             </Grid>
         </footer >

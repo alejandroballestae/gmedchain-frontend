@@ -57,7 +57,7 @@ const Products = (props) => {
                 <Grid item xs={12}>
                     <SectionTitle
                         title="Our Exclusive Products"
-                        subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with Edefy!"
+                        subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with GMedchain!"
                     />
                 </Grid>
                 <Grid item xs={12}>

@@ -39,7 +39,6 @@ const AboutUs = () => {
             />
             <AboutContent />
             <Funfact className="funfactAreaStyleTwo" />
-            <Team />
             <Testmonial />
             <Footer />
         </Fragment>

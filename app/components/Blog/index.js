@@ -51,7 +51,7 @@ const Blog = (props) => {
                 <Grid item xs={12}>
                     <SectionTitle
                         title='Latest News'
-                        subtitle='Build and Earn with your online store with lots of cool and exclusive features bundled with Edefy!'
+                        subtitle='Build and Earn with your online store with lots of cool and exclusive features bundled with GMedchain!'
                     />
                 </Grid>
                 {blogs.items.map((item, i) => (

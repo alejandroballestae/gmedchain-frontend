@@ -96,7 +96,7 @@ const NewlyAddProducts = () => {
                 <Grid item xs={12}>
                     <SectionTitle
                         title="Only Certified Suppliers"
-                        //subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with Edefy!"
+                        //subtitle="Build and Earn with your online store with lots of cool and exclusive features bundled with GMedchain!"
                     />
                 </Grid>
                 <Grid xs={12} item>
