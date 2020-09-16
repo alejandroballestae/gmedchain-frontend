@@ -58,6 +58,7 @@ const Header = (props) => {
     const [expanded, setExpanded] = useState('0');
     const [menu, setMenu] = useState(false);
     const [products, setProducts] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
     console.log('HEADERRRRRRRRRRRRRRR');
     console.log(localStorage.getItem("token"));
@@ -157,9 +158,10 @@ const Header = (props) => {
                                 <TextField
                                     fullWidth
                                     variant="outlined"
+                                    onChange={(e) => setSearchText(e.target.value)}
                                     InputProps={{
                                         endAdornment: <InputAdornment position="end">
-                                            <Button><i className="fi flaticon-magnifying-glass"></i></Button>
+                                            <Button component={Link} to={{pathname:'/products',state:{searchText}}}><i className="fi flaticon-magnifying-glass"></i></Button>
                                         </InputAdornment>,
                                     }}
                                 />
